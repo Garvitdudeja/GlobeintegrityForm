@@ -1,0 +1,653 @@
+@media(max-width:1920px){
+    /* .container-fluid{
+        max-width: 1800px;
+        margin-inline: auto;
+    } */
+     .container-fluid{
+        padding-inline: 3.5rem !important;
+    }
+    .header .container-fluid,
+    .footer .container-fluid
+    {
+    max-width: 120rem;
+    padding: 0 36px !important;
+    }
+    }
+@media(max-width: 1800px){
+    .customLabel{
+        font-size: 20px;
+    }
+}
+@media(max-width:1800px){
+    .moreQue img {
+        padding: 32px 48px 24px;
+    }
+    .moreQueSection .heading54{
+        font-size: 3rem;
+    }
+}
+@media (min-width: 1752px){
+ .container-fluid{
+    max-width: 1752px;
+ }
+
+}
+@media(max-width:1400px){
+    /* .logo img
+    {
+        width: 100%;
+        height: 100%;
+    } */
+    .customLabel{
+        font-size: 16px;
+    }
+    .stepsCard .sub36{
+        font-size: 32px;
+    }
+    .stepsCard {
+        margin-bottom: 3.6875rem;
+    }
+    .leftRighArrow{
+        display: inline-block !important;
+    }
+
+}
+@media(max-width:1200px){
+    .stepDes .heading36
+    {
+        font-size: 27px;
+    }
+    .stepDes .sub36{
+        font-size: 23px;
+    }
+    .stepsCard {
+        margin-bottom: 3.6875rem;
+    }
+    .container-fluid {
+        padding-inline: 52px !important;
+    }
+}
+@media(max-width: 992px){
+    .menu {
+    flex-direction: column;
+    background-color: var(--white);
+    align-items: start;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    gap: 0 !important;
+  }
+  .menu a {
+    margin-left: 12px;
+  }
+  .menu li {
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+  }
+  .menu li .downArrow_{
+    display: none;
+  }
+  .menu-icon {
+    border: 1px solid #2d3269;
+    border-radius: 5px;
+    padding: 0 7px;
+    font-size: 16px;
+    display: block;
+  }
+      .taxCard {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } 
+    .btnToggleOuter {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+      }
+    .menu-icon{
+        font-size: 1.5rem;
+    }
+    #menu-toggle:checked ~ .menu {
+        margin-top: 18px;
+    }
+    .stepsCard {
+        margin-bottom: 3.6875rem;
+    }
+    .stepNum {
+        width: 40px;
+        height: 40px;
+        font-size: 25px;
+    }
+    .stepsCard .heading36,
+    .stepsCard .sub36
+    {
+        font-size: 24px;
+    }
+    .steps .commonBtn {
+        margin-left: 3.2rem;
+    }
+    .footer .sub16{
+        font-size: 18px;
+    }
+    .customer .react-multi-carousel-list{
+        padding-bottom: 12px;
+    }
+    .customLabel{
+        font-size: 16px;
+    }
+    .stedy .heading54,
+    .universe .heading54,
+    .benifit .heading54,
+    .premiumGraph .heading54,
+    .prouctFaq .heading54,
+    .moreQueSection .heading54
+    {
+        font-size: 2.275rem;
+    }
+     .stedy .sub24,
+     .universe .sub24,
+     .moreQueSection .sub24
+     {
+        font-size: 17px;
+    }
+    .stedy .commonBtnBig,
+    .universe .commonBtnBig,
+    .benifit .commonBtnBig,
+    .premiumGraph .commonBtnBig,
+    .prouctFaq .commonBtnBig,
+    .moreQueSection .commonBtnBig
+    {
+        max-width: 14.5rem;
+        height: 3rem;
+        font-size: 14px;
+    }
+    .premiumGraph .sub18{
+        font-size: 1rem;
+    }
+    .uldata, .cddata{
+        font-size: 1rem;
+    }
+    .cddata{
+        margin-bottom: 20px;
+    }
+    .prouctFaq .accordion-button{
+        font-size: 1.2rem;
+    }
+    
+    .moreQueSection{
+        padding-block: 1.875rem;
+    }
+    .moreQue img {
+        padding: 32px 54px 24px;
+    }
+    .faqCard{
+        display: none;
+    }
+    .tabBox h4 {
+        font-size: 25px;
+        font-weight: 700;
+    }
+    .tooltipBox {
+    left: 4%;
+    transform: translateX(-4%);
+}
+.tooltipBox:after {
+    left: 4%;
+    transform: translateX(4%);
+}
+.calcLeftCard, .calcRightCard {
+   height: auto;
+}
+.subMenuDiv{
+    visibility: visible;
+    opacity: 1;
+    padding: 0;
+    position: static;
+    box-shadow: none !important;
+}
+}
+@media(max-width:768){
+    .stedyCard {
+        display: none;
+    }
+    .stedyCard.stedyCardIul{
+        display: block;
+    }
+    .moreQueSection{
+        padding-block: 1.875rem;
+    }
+    .moreQue img {
+        padding: 32px 54px 24px;
+    }
+    .faqCard{
+        display: none;
+    }
+    .header .container-fluid {
+        padding: 0 13px !important;
+    }
+    .header .commonBtn {
+        padding: 9px 13px;
+        font-size: 15px;
+    }
+    .header .logo img{
+        max-width: 11.25rem;
+    }
+}
+@media(max-width:768){
+    .formstay input{
+        max-width: 60%;
+        font-size: 20px;
+    }
+    .formstay input::placeholder{
+        font-size: 20px;
+    }
+    .productStay .heading54{
+        font-size: 2rem;
+    }
+
+}
+@media(max-width:576px){
+    .orderTwo{
+        order: 2;
+    }
+    .orderOne{
+        order: 1;
+    }
+    .stedyCard {
+        display: none;
+    }
+}
+@media(max-width: 480px){
+nav {
+    padding: 9px 0 9px;
+}
+.banner {
+    padding: 15px 10px;
+}
+.bannerInner {
+    padding: .625rem 0 .75rem .625rem;
+    border-radius: 1rem;
+    background-size: 52% 73%;
+}
+.bannerInner .heading54,
+.bannerInner .sky
+{
+    font-size: 1.25rem;
+    font-weight: 600;
+    max-width: 248px;
+}
+.heading54 br{
+    display: none;
+}
+.bannerInner .sub16{
+    font-size: 12px;
+    max-width: 171px;
+}
+.bannerInner .commonBtn,
+.bannerInner .blueBtn
+{
+    font-size: 11px;
+    padding: 5px;
+}
+.blueBtn img{
+    width: 7.94px;
+    height: 7.94px;
+    margin-bottom: 0 !important;
+}
+.bannerInner .blueBtn{
+    background: #fff;
+}
+.bannerInner .blueBtn img {
+    width: 9.94px;
+    height: 9.94px;
+    margin-bottom: 2px !important;
+    margin-left: 2px !important;
+
+}
+.header .logo img {
+    width: 148.98px;
+    height: 37.17px;
+}
+.customer {
+    padding-block: 2.1875rem;
+}
+.customer .heading54,
+.customer .sky{
+    font-size: 1.5rem;
+    max-width: 21.1875rem;
+    margin-inline: auto;
+}
+.customerCard {
+    margin-inline: 9px;
+}
+.customerCard img{
+    height: 2.5rem;
+}
+
+
+.tax .sky
+{
+    margin-bottom: 2.125rem;
+    font-size: 24px;
+    max-width: 15rem;
+    margin-inline: auto;
+}
+
+.tax .heading54{
+        margin-bottom: 2.125rem;
+    font-size: 24px;
+}
+.taxCard .heading54 br{
+    display: none;
+}
+.tax .taxCard .heading54 br{
+    font-size: 25.67px;
+    max-width: 100px !important;
+}
+.customerCard{
+    padding: 1.125rem 2.125rem 1.625rem 2.1875rem;
+}
+.taxHeading br{
+display: block !important;
+}
+.taxHeading {
+    margin-left: 0 !important;
+}
+.taxCard .blueBtn{
+    font-size: .875rem;
+}
+.steps .heading54,
+.steps .sky,
+.love .heading54,
+.love .sky,
+.faq .heading54,
+.faq .sky
+{
+    font-size: 24px;
+    font-weight: 600;
+}
+.steps{
+    padding-block: 1.25rem;
+}
+.steps .heading36,
+.steps .sub36
+{
+    font-size: .75rem;
+}
+.stepNum{
+    width: 1.125rem;
+    height: 1.125rem;
+    font-size: .6875rem;
+}
+.stepsCard{
+    gap: 11px;
+}
+.stepsCard {
+    margin-bottom: 0.6875rem;
+}
+.steps .commonBtn {
+    margin-left: 2rem;
+    font-size: 12px;
+}
+.love .sub36{
+    font-size: 1.25rem;
+}
+.customLabel{
+    font-size: 14px;
+}
+.customInput{
+    height: 2.75rem;
+}
+.rangeCount {
+    font-size: 14px !important;
+    top: -28px !important;
+}
+.rangeRound {
+    width: 24px !important;
+    height: 24px !important;
+}
+.love .loveBtn{
+    height: 2.75rem;
+}
+.love {
+    padding: 3.1875rem 0 3.25rem;
+}
+.faq .heading54{
+    margin-bottom: 0 !important;
+}
+.love .commonBtn{
+    font-size: .875rem;
+}
+.faq .row:first-child{
+    margin-bottom: 0 !important;
+}
+.faqItem{
+    padding: 20px 0;
+}
+.icon,
+.question
+{
+    font-size: 1.25rem;
+}
+.faq-content,
+.toggleBtn,
+.agentDetail
+{
+    font-size: 1rem;
+}
+.agent .heading54, .agent .sky {
+    font-size: 24px;
+}
+.agentDetail .telWhiteOuter{
+    width: 30px;
+    height: 30px;
+}
+.agentDetail .telWhiteOuter img{
+    width: 15px;
+    height: 15px;
+}
+.agent .commonBtn{
+    font-size: 12px;
+}
+.agentDetail{
+    gap: 10px;
+}
+.footer{
+    padding-block: 2.1875rem;
+}
+.social{
+    text-align: start;
+    padding-left: 0;
+}
+.header .commonBtn {
+    padding: 4.5px 10px;
+    font-size: 12px;
+}
+.header .commonBtn img{
+    width: 12px;
+    height: 12px;
+    margin-bottom: 0 !important;
+}
+ .footer .sub16{
+        font-size: 16px;
+}
+.header .container-fluid,
+.footer .container-fluid
+{
+    padding-inline: 12px !important;
+}
+.stedy {
+    padding-block: 3.25rem;
+}
+.prouctFaq {
+    padding-block: 2.25rem;
+}
+.formstay input,
+.productArrow 
+{
+    height: 3.125rem;
+}
+.productArrow svg{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.universeCard{
+    text-align: center;
+}
+.benifitCard {
+    padding-inline: 0;
+}
+.moreQue img {
+    padding: 32px 44px 24px;
+}
+.container-fluid {
+    padding-inline: 24px !important;
+}
+.stedyCardTop{
+    text-align: center;
+}
+.productStay {
+    padding-block: 3rem;
+}
+.moreQueSection{
+    text-align: center;
+}
+.prouctFaq .heading54{
+    text-align: center;
+}
+.prouctFaq .commonBtnBig{
+    display: block;
+    margin-inline: auto;
+}
+.menu-icon {
+    font-size: 1rem;
+}
+.termsVsCard .heading54{
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+.termsVs {
+    padding-block: 38px;
+}
+.termsVsCard .sub24,
+.termsVsCardRight .sub24
+{
+    font-size: 1.1875rem;
+}
+.tickIcon {
+    width: 33px;
+    height: 33px;
+}
+.stedyCardTop .w-75{
+    width: 100% !important;
+}
+.tabBox h4 {
+    font-size: 18px;
+    font-weight: 600;
+}
+.dotFill, .dotFade{
+    width: 12px;
+    height: 12px;
+}
+.tracking-wider {
+    letter-spacing: 2px;
+}
+.tabContent .heading36{
+    font-size: 20px;
+}
+.taxList{
+    text-align: start;
+}
+.calcLeftCard{
+    padding: 1.875rem;
+}
+.calcLeftCard .heading54{
+    font-size: 2rem;
+}
+.calcLeftCard .sub24{
+    font-size: 1.1875rem;
+}
+.calcCount {
+    width: 40px;
+    height: 40px;
+    font-size: 26px;
+}
+.tooltipBox {
+    left: 0;
+    transform: translateX(-2%);
+}
+.tooltipBox:after {
+    left: 2%;
+    transform: translateX(2%);
+}
+.calcFormControl {
+    flex-wrap: wrap;
+}
+.calcLabel, .calcInput {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.calcLeftCard, .calcRightCard{
+    height: auto;
+}
+.calcHeading {
+    font-size: 24px;
+}
+.calcRightInne,
+.policyType
+{
+    padding: 1.875rem;
+}
+.calcRightInner{
+    min-height: auto;
+    text-align: center;
+}
+.calcFooter {
+    padding: 40px 30px;
+}
+.mainFaqPageNav {
+    top: 56px;
+    border-bottom: 1px solid #000;
+}
+.faqPage {
+    height: 251px;
+}
+.faqHead .heading28 {
+    font-size: 1.625rem;
+}
+.faqHead p{
+    font-size: 1.1875rem;
+}
+.faqHead input {
+    padding: 11px 63px 11px 18px;
+}
+.searchBtn{
+    padding: .375rem;
+}
+.faqHead input::placeholder {
+   font-size: 19px;
+}
+.prouctFaq.mainFaqPage .accordion-button {
+    font-size: 1rem;
+    font-weight: 600 !important;
+}
+.mainFaqItems {
+    padding-block: 2.75rem;
+}
+.mainFaqPage .heading28{
+    font-size: 1.25rem;
+}
+.menu{
+    top: 38px;
+}
+}
