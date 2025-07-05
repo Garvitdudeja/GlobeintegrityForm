@@ -219,6 +219,11 @@ opacity: 1;
   padding: 8px;
   border-radius: 8px;
 }
+.selected{
+    color: #1dd3f5;
+    background-color: #f0f9ff;
+    border-color: #1dd3f5;
+}
 .btnToggleOuter {
   display: flex;
   flex-direction: row-reverse;
@@ -1249,4 +1254,543 @@ opacity: 1;
 .leftRighArrow{
   border: 1px solid black !important;
   display: none !important;
+}
+
+.customerCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* or center, depending on your layout */
+  align-items: center;
+  height: 100%; /* Needed if parent has fixed height */
+  min-height: 300px; /* Set based on your content */
+}
+
+/* Start Steper Css */
+/* Add this to your global CSS or module file */
+.react-form-stepper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.react-form-stepper .step {
+  text-align: center;
+  flex: 1;
+  position: relative;
+}
+
+.react-form-stepper .step::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ccc;
+  z-index: -1;
+}
+
+.react-form-stepper .step:first-child::before {
+  left: 50%;
+}
+
+.react-form-stepper .step:last-child::before {
+  right: 50%;
+}
+
+.react-form-stepper .step .circle {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ccc;
+  line-height: 30px;
+  color: white;
+}
+
+.react-form-stepper .step.active .circle {
+  background: #007bff;
+}
+.top-25{
+  top: 25%;
+}
+.stepCount{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  border-radius: 50%;
+}
+.stepOuter{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  /* margin-bottom: 30px; */
+}
+.stepOuter .barText:nth-child(2){
+ text-align: center;
+}
+.stepOuter .barText:nth-child(2) .stepCount{
+ margin-inline: auto;
+}
+.stepOuter .barText:nth-child(3){
+ text-align: end;
+}
+.stepOuter .barText:nth-child(3) .stepCount{
+ margin-left: auto;
+}
+.barText{
+  margin-top: 10px;
+}
+
+
+.custom-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.custom-checkbox {
+  display: none;
+}
+
+.custom-checkbox + label {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #1dd3f5;
+  border-radius: 6px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-checkbox:checked + label {
+  background-color: #2D3269; /* green */
+  border-color: #2D3269;
+}
+
+.custom-checkbox:checked + label::after {
+    content: "✓";
+    color: #fff;
+    font-size: 20px;
+    position: absolute;
+    top: 0px;
+    left: 6px;
+    font-weight: 600;
+}
+
+.custom-check-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+
+.custom-checkbox {
+  display: none;
+}
+
+.check-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #1e2a5a; /* dark blue */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #1e2a5a;
+  cursor: pointer;
+  position: relative;
+}
+
+.custom-checkbox:checked + .check-box::after {
+  content: "✔";
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.check-label {
+  color: #1e2a5a;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 20px;
+    font-family: "DM Sans", sans-serif;
+}
+.activeBar {
+    font-family: DM Sans, sans-serif;
+    font-size: 12px;
+    color: #2d3269;
+}
+.inActiveBar {
+    font-family: DM Sans, sans-serif;
+    font-size: 12px;
+    color: #939498;
+}
+.bgBlue{
+  background: #2d3269;
+}
+.steperBack{
+  background: transparent;
+    border-radius: 50%;
+    color: rgb(45, 50, 105);
+    display: flex;
+    align-items: center;
+    width: 56px;
+    height: 56px;
+    outline: none !important;
+    box-shadow: none !important;
+    border:1px solid rgb(45, 50, 105);
+    justify-content: center;
+}
+.steperOption .commonBtn{
+ width: 100%;
+  max-width: 160px;
+  height: 56px;
+  font-size: 16px;
+}
+.steperOption .commonBtn:hover{
+background-color:rgb(45, 50, 105);
+}
+.custom-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.custom-radio-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.custom-radio-option input[type="radio"] {
+  display: none;
+}
+
+.custom-radio-option label {
+  position: relative;
+  padding-left: 55px;
+  color: #1e2a5a;
+  font-size: 14px;
+  cursor: pointer;
+  font-size: 20px;
+    font-family: "DM Sans", sans-serif;
+}
+
+/* Circle */
+.custom-radio-option label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 31px;
+  height: 31px;
+  border: 2px solid #0c3a36;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+/* Filled dot when checked */
+.custom-radio-option input[type="radio"]:checked + label::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 7px;
+  width: 21px;
+  height: 21px;
+  background-color: #2d3269; /* Green */
+  border-radius: 50%;
+}
+.selectGender {
+  border: 2px solid #2d3269;
+  text-align: center;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  font-size: 20px;
+  font-family: "DM Sans", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.selectGender:hover {
+  border-color: #1dd3f5;
+  color: #1dd3f5;
+  background-color: #f0f9ff; /* light background on hover */
+}
+
+.custom-date-input {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  border: 1px solid #0c3a36;
+  border-radius: 2px;
+  outline: none;
+  color: #0c3a36;
+  background-color: white;
+
+  /* Remove default icon in Chrome */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  position: relative;
+}
+
+/* Hide the calendar icon in WebKit browsers */
+.custom-date-input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+}
+
+/* Add a fake placeholder with before */
+.custom-date-input::before {
+  content: attr(data-placeholder);
+  color: #0c3a36;
+}
+
+/* Hide fake placeholder when input has a value */
+.custom-date-input:valid::before {
+  content: "";
+}
+.react-datepicker-wrapper{
+  width: 100%;
+}
+.react-datepicker-wrapper input{
+  width: 100%;
+  height: 50px;
+  padding-left: 10px;
+}
+
+
+/* Signup */
+.fade-enter {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.3s ease;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.3s ease;
+}
+.steperOptionInner{
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 176px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+}
+
+.seletDateOuter {
+  position: relative;
+  margin-top: 30px;
+  font-family: sans-serif;
+  width: 100%;
+  max-width: 600px;
+}
+
+.seletDateOuter input {
+  width: 100%;
+  padding: 18px 12px;
+  font-size: 16px;
+  border: 1px solid #1e2a5a;
+  border-radius: 4px;
+  outline: none;
+}
+
+.seletDateOuter label {
+  position: absolute;
+  left: 12px;
+  top: 18px;
+  color: #666;
+  font-size: 17px;
+  background: white;
+  padding: 0 4px;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.seletDateOuter input:focus + label,
+.seletDateOuter input:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 8px;
+  font-size: 12px;
+  color: #1e2a5a;
+}
+.seletDateOuter input:focus {
+  border-color: #1e2a5a;
+}
+.formSliderWraper{
+  position: relative;
+  margin-top: 60px;
+}
+.formSliderWraper .slider-label-box {
+  position: absolute;
+  top: -40px;
+  left: 0; /* Will be positioned using transform + left from parent */
+  background-color: #1e2a5a;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+/* The arrow */
+.formSliderWraper .slider-label-arrow {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #1e2a5a;
+}
+.custombar-slider {
+  width: 100%;
+  height: 6px;
+  appearance: none;
+  border-radius: 3px;
+  outline: none;
+}
+
+/* Thumb */
+.custombar-slider::-webkit-slider-thumb {
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  background-color: #1e2a5a;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -5px;
+}
+
+.custombar-slider::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  background-color: #1e2a5a;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Firefox */
+.custombar-slider::-moz-range-track {
+  height: 6px;
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.custombar-slider::-moz-range-progress {
+  height: 6px;
+  background: #1e2a5a;
+  border-radius: 3px;
+}
+.didYouNow {
+    background: #1dd3f51a;
+    padding: 10px;
+    border-radius: 10px;
+}
+.select-label {
+  display: block;
+  font-size: 24px;
+  font-family: serif;
+  margin-bottom: 8px;
+}
+
+.custom-select {
+  width: 100%;
+  padding: 20px 12px;
+  border: 2px solid #1e2a5a; /* green border */
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: "DM Sans", sans-serif;
+  appearance: none;
+  background-color: white;
+  background-image: url("data:image/svg+xml,%3Csvg fill='gray' height='18' viewBox='0 0 24 24' width='18' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
+  cursor: pointer;
+}
+
+/* Optional: focus and hover */
+.custom-select:focus {
+  outline: none;
+  border-color: #1e2a5a;
+  box-shadow:none !important;
+}
+.input-label {
+  font-size: 24px;
+  font-family: serif;
+  margin-bottom: 8px;
+  display: block;
+  color: #103d3d; /* Dark green like in your image */
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #103d3d;
+  border-radius: 2px;
+  padding: 20px 12px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.weight-input {
+  border: none;
+  outline: none;
+  font-size: 18px;
+  flex: 1;
+  color: #103d3d;
+  font-family: "DM Sans", sans-serif;
+  background-color: transparent;
+}
+
+.unit {
+  font-size: 18px;
+  color: #103d3d;
+  font-family: serif;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
