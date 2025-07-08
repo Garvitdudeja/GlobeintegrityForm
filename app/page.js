@@ -13,7 +13,7 @@ import EstimateCard from "@/Components/EstimateCards";
 export default function SignUp() {
   const router = useRouter()
 
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(0);
   const [currentInput, setCurrentInput] = useState(0);
   const [sliderValue, setSliderValue] = useState(250);
   const [errors, setErrors] = useState({});
