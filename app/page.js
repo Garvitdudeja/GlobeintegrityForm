@@ -8,57 +8,58 @@ import * as images from '@/utilities/images'
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Select from 'react-select';
+import EstimateCard from "@/Components/EstimateCards";
 
 export default function SignUp() {
   const router = useRouter()
 
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(2);
   const [currentInput, setCurrentInput] = useState(0);
   const [sliderValue, setSliderValue] = useState(250);
   const [errors, setErrors] = useState({});
   const min = 100;
   const max = 1000;
   const customStyles = {
-  control: (provided, state) => ({
-    ...provided,
-    padding: '20px 8px',
-    fontSize: '18px',
-    borderRadius: '2px',
-    borderColor: '#103d3d',
-  }),
-  valueContainer: (provided) => ({
-    ...provided,
-    padding: '0',
-  }),
-  input: (provided) => ({
-    ...provided,
-    margin: '0',
-    padding: '0',
-  }),
-  placeholder: (provided) => ({
-    ...provided,
-    fontSize: '18px',
-    color: '#666',
-  }),
-  option: (provided, state) => ({
-    ...provided,
-    fontSize: '18px',
-    padding: 12,
-    backgroundColor: state.isSelected
-      ? '#d9f9ff'
-      : state.isFocused
-      ? '#e9fbfd'
-      : 'white',
-    borderLeft: state.isSelected ? '4px solid #1dd3f5' : 'none',
-    color: '#000',
-    cursor: 'pointer',
-  }),
-  menuList: (provided) => ({
-    ...provided,
-    maxHeight: '200px', // Limit to 4 visible options
-    overflowY: 'auto',
-  }),
-};
+    control: (provided, state) => ({
+      ...provided,
+      padding: '20px 8px',
+      fontSize: '18px',
+      borderRadius: '2px',
+      borderColor: '#103d3d',
+    }),
+    valueContainer: (provided) => ({
+      ...provided,
+      padding: '0',
+    }),
+    input: (provided) => ({
+      ...provided,
+      margin: '0',
+      padding: '0',
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      fontSize: '18px',
+      color: '#666',
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      fontSize: '18px',
+      padding: 12,
+      backgroundColor: state.isSelected
+        ? '#d9f9ff'
+        : state.isFocused
+          ? '#e9fbfd'
+          : 'white',
+      borderLeft: state.isSelected ? '4px solid #1dd3f5' : 'none',
+      color: '#000',
+      cursor: 'pointer',
+    }),
+    menuList: (provided) => ({
+      ...provided,
+      maxHeight: '200px', // Limit to 4 visible options
+      overflowY: 'auto',
+    }),
+  };
 
 
 
@@ -87,6 +88,7 @@ export default function SignUp() {
     Last_Name: '',
     Email: '',
     Phone: '',
+    terms: false
 
   });
 
@@ -99,7 +101,7 @@ export default function SignUp() {
       title: "Account Info",
       inputs: ["income", "investment", "citizen", "employed", "marital", "activities", "health", "substances", "hiv", "name"]
     },
-    { title: "Estimate Confirmation", inputs: ["review"] },
+    { title: "Estimate Confirmation", inputs: ["review", "booking"] },
   ];
 
   const heightOptions = [
@@ -180,6 +182,7 @@ export default function SignUp() {
   // Validation function
   const isCurrentInputValid = (value) => {
     const currentField = currentStepInputs[currentInput];
+    console.log(value, currentStepInputs, currentField, "value")
 
     switch (currentField) {
       case "goal":
@@ -271,6 +274,7 @@ export default function SignUp() {
 
   const nextInput = (value = "") => {
     const currentField = currentStepInputs[currentInput];
+    console.log(value, currentField, isCurrentInputValid(value), "isCurrentInputValid");
 
     if (!isCurrentInputValid(value)) {
       // Set error for current field
@@ -364,7 +368,7 @@ export default function SignUp() {
           Insurance: formData.goal.join(', '),
           Risk_Tolerance: formData.risk,
           Gender: formData.gender,
-          Date_of_Birth: formData.dob, // If Zoho requires YYYY-MM-DD, format it accordingly
+          Date_of_Birth: formData.dob,
           Zip_Code: formData.zipCode,
           Personal_Income: parseFloat(formData.personalIncome),
           Comfortable_Monthly_Contribution: parseFloat(formData.monthlyContribution),
@@ -479,7 +483,7 @@ export default function SignUp() {
             <div className="col-12">
               <div className="steperOptionInner">
                 <div className="row justify-content-center">
-                  <div className="col-lg-8">
+                  <div className={`col-lg-${step === 2 ? 12 : 8}`}>
                     <div
                       className={`animated-slide ${fade ? "fade-enter-active" : "fade-exit-active"
                         }`}
@@ -873,36 +877,39 @@ export default function SignUp() {
                             </>
                           )}
                           {currentInput === 6 && (
-                            <>
-                              <div className="row">
-                                <div className="col-lg-12 mb-3">
-                                  <label htmlFor="height" className="select-label">Height (ft)</label>
-                                  <Select
-                                    id="height"
-                                    classNamePrefix="custom"
-                                    styles={customStyles}
-                                    options={heightOptions}
-                                    onChange={(selected) => updateFormData('height', selected?.value || '')}
-                                    placeholder="Select Height"
-                                  />
-                                </div>
+                            <div className="row">
+                              <div className="col-lg-12 mb-3">
+                                <label htmlFor="height" className="select-label">Height (ft)</label>
+                                <Select
+                                  id="height"
+                                  classNamePrefix="custom"
+                                  styles={customStyles}
+                                  options={heightOptions}
+                                  onChange={(selected) => updateFormData('height', selected?.value || '')}
+                                  placeholder="Select Height"
+                                />
+                              </div>
 
-                                <div className="col-lg-12 mb-3">
-                                  <label htmlFor="weight" className="input-label">Weight (lbs)</label>
-                                  <div className="input-wrapper">
-                                    <input
-                                      type="number"
-                                      id="weight"
-                                      className="weight-input"
-                                      placeholder=""
-                                      value={formData.weight}
-                                      onChange={(e) => updateFormData('weight', e.target.value)}
-                                    />
-                                    <span className="unit">lbs</span>
-                                  </div>
+                              <div className="col-lg-12 mb-3">
+                                <label htmlFor="weight" className="input-label">Weight (lbs)</label>
+                                <div className="input-wrapper">
+                                  <input
+                                    type="number"
+                                    id="weight"
+                                    className="weight-input"
+                                    placeholder=""
+                                    value={formData.weight}
+                                    onChange={(e) => updateFormData('weight', e.target.value)}
+                                  />
+                                  <span className="unit">lbs</span>
                                 </div>
                               </div>
-                            </>
+                              {errors[getCurrentField()] && (
+                                <p className="text-danger mt-3" style={{ fontSize: '14px', marginBottom: '10px' }}>
+                                  {errors[getCurrentField()]}
+                                </p>
+                              )}
+                            </div>
                           )}
                           {currentInput === 7 && (
                             <>
@@ -931,6 +938,11 @@ export default function SignUp() {
                                   </label>
                                 </div>
                               ))}
+                              {errors[getCurrentField()] && (
+                                <p className="text-danger mt-3" style={{ fontSize: '14px', marginBottom: '10px' }}>
+                                  {errors[getCurrentField()]}
+                                </p>
+                              )}
                             </>
                           )}
                           {currentInput === 8 && (
@@ -961,6 +973,11 @@ export default function SignUp() {
                                   </div>
                                 </div>
                               </div>
+                              {errors[getCurrentField()] && (
+                                <p className="text-danger mt-3" style={{ fontSize: '14px', marginBottom: '10px' }}>
+                                  {errors[getCurrentField()]}
+                                </p>
+                              )}
                             </>
                           )}
                           {currentInput === 9 && (<>
@@ -1010,42 +1027,34 @@ export default function SignUp() {
                               />
                               <label htmlFor="Phone">Phone</label>
                             </div>
+                            <div className="d-flex flex-row gap-3 pt-4">
+                              <div className="custom-checkbox-wrapper mt-1">
+                                <input
+                                  type="checkbox"
+                                  id="goalmm"
+                                  className="custom-checkbox"
+                                  checked={formData.terms}
+                                  onChange={(e) => updateFormData("terms", e.target.checked)}
+                                />
+                                <label htmlFor="goalmm" ></label>
+                              </div>
+                              <p className="sub20">
+                                I am the person indicated above, I agree to do business electronically, and I confirm that I have read and agree to the HIPAA Authorization, Electronic Record and Signature Disclosure, Telephone Consumer Protection Act and State-Law Equivalents, Voice Signature Authorization, Terms and Conditions, and Fraud Statement. I agree to receive an SMS to create a Verified account, and I agree to Verified’s <a href="https://www.verified.inc/legal#terms-of-use">Terms of Use</a>.
+                              </p>
+                            </div>
+                            <p className="text-danger mt-3" style={{ fontSize: '14px', marginBottom: '10px' }}>
+                              {errors[getCurrentField()]}
+                            </p>
                           </>)}
                         </>
                       )}
 
                       {step === 2 && (
-                        <>
-                          <h1 className="heading54 mb-2">Review Your Information</h1>
-                          <div className="review-section">
-                            <p className="sub20 mb-3">Please review your information before submitting:</p>
-                            <div className="form-summary" style={{ textAlign: 'left', padding: '20px', backgroundColor: '#f8f9fa', borderRadius: '8px', marginBottom: '20px' }}>
-                              <h5 className="sub24">Personal Information:</h5>
-                              <p><strong>Goals:</strong> {formData.goal.join(', ') || 'Not specified'}</p>
-                              <p><strong>Risk Tolerance:</strong> {formData.risk || 'Not specified'}</p>
-                              <p><strong>Gender:</strong> {formData.gender || 'Not specified'}</p>
-                              <p><strong>Date of Birth:</strong> {formData.dob || 'Not specified'}</p>
-                              <p><strong>Zip Code:</strong> {formData.zipCode || 'Not specified'}</p>
-
-                              <h5 className="sub24 mb-3">Account Information:</h5>
-                              <p><strong>Household Income:</strong> {formData.householdIncome || 'Not specified'}</p>
-                              <p><strong>Personal Income:</strong> {formData.personalIncome || 'Not specified'}</p>
-                              <p><strong>Monthly Contribution:</strong> ${formData.monthlyContribution}</p>
-                              <p><strong>U.S. Citizen:</strong> {formData.citizen || 'Not specified'}</p>
-                              <p><strong>Employed:</strong> {formData.employed || 'Not specified'}</p>
-                              <p><strong>Marital Status:</strong> {formData.maritalStatus || 'Not specified'}</p>
-                              <p><strong>Activities:</strong> {formData.activities.join(', ') || 'Not specified'}</p>
-                              <p><strong>Height:</strong> {formData.height || 'Not specified'}</p>
-                              <p><strong>Weight:</strong> {formData.weight ? `${formData.weight} lbs` : 'Not specified'}</p>
-                              <p><strong>Substance Use:</strong> {formData.substanceUse.join(', ') || 'Not specified'}</p>
-                              <p><strong>HIV Status:</strong> {formData.hivStatus || 'Not specified'}</p>
-                            </div>
-                            <button className="btn btn-success" onClick={handleSubmit}>
-                              Submit Application
-                            </button>
-                          </div>
+                        <>{currentInput === 0 && <EstimateCard data={formData} next={nextInput} />}
+                          {currentInput === 1 && <iframe width='100%' title="zohoBookings" height='750px' src={`https://wealthmanagement.zohobookings.com/portal-embed#/4491295000001065010?Name=${formData.First_Name + " " + formData.Last_Name}&Email=${formData.Email}}`} frameborder='0' allowfullscreen='' > </iframe>}
                         </>
                       )}
+
                     </div>
                   </div>
                 </div>
@@ -1069,7 +1078,7 @@ export default function SignUp() {
                   )}
                   {(step < steps.length - 1 ||
                     currentInput < currentStepInputs.length - 1) && (
-                      <button className="commonBtn" onClick={nextInput}>
+                      <button className="commonBtn" onClick={() => nextInput("")}>
                         Next
                       </button>
                     )}
@@ -1086,5 +1095,7 @@ export default function SignUp() {
           </div>
         </div>
       </div>
+
+
     </>);
 }
