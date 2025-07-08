@@ -377,7 +377,7 @@ export default function SignUp() {
           Marital_Status: formData.maritalStatus,
           Weight: parseFloat(formData.weight),
           Tobacco_Marijuana_Use: formData.substanceUse.join(', '),
-          Last_name: formData.Last_Name,
+          Last_Name: formData.Last_Name,
           First_Name: formData.First_Name,
           Email: formData.Email,
           Phone: formData.Phone
