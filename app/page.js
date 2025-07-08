@@ -569,7 +569,7 @@ export default function SignUp() {
                                 What&apos;s your gender?
                               </h1>
                               <div className="row">
-                                <div className="col-lg-6">
+                                <div className="col-lg-6 mb-3 mb-lg-0">
                                   <div
                                     className={`selectGender ${formData.gender === 'Male' ? 'selected' : ''}`}
                                     onClick={() => updateFormData('gender', 'Male', true)}
@@ -760,7 +760,7 @@ export default function SignUp() {
                                 Are you a U.S. Citizen?
                               </h1>
                               <div className="row">
-                                <div className="col-lg-6">
+                                <div className="col-lg-6 mb-3 mb-lg-0">
                                   <div
                                     className={`selectGender ${formData.citizen === 'Yes' ? 'selected' : ''}`}
                                     onClick={() => updateFormData('citizen', 'Yes', true)}
@@ -792,7 +792,7 @@ export default function SignUp() {
                                 Are you currently employed?
                               </h1>
                               <div className="row">
-                                <div className="col-lg-6">
+                                <div className="col-lg-6 mb-3 mb-lg-0">
                                   <div
                                     className={`selectGender ${formData.employed === 'Yes' ? 'selected' : ''}`}
                                     onClick={() => updateFormData('employed', 'Yes', true)}
@@ -954,7 +954,7 @@ export default function SignUp() {
                                 We know this is a sensitive topic, and we take great measures to ensure your privacy.
                               </p>
                               <div className="row">
-                                <div className="col-lg-6 mb-3 ">
+                                <div className="col-lg-6 mb-3 mb-lg-0 ">
                                   <div
                                     className={`selectGender ${formData.hivStatus === 'Yes' ? 'selected' : ''}`}
                                     onClick={() => updateFormData('hivStatus', 'Yes', true)}
