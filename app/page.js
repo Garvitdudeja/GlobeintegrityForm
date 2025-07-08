@@ -7,15 +7,60 @@ import Image from 'next/image'
 import * as images from '@/utilities/images'
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Select from 'react-select';
 
 export default function SignUp() {
   const router = useRouter()
+
   const [step, setStep] = useState(0);
   const [currentInput, setCurrentInput] = useState(0);
-  const [sliderValue, setSliderValue] = useState(1000);
+  const [sliderValue, setSliderValue] = useState(250);
   const [errors, setErrors] = useState({});
   const min = 100;
-  const max = 10000;
+  const max = 1000;
+  const customStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    padding: '20px 8px',
+    fontSize: '18px',
+    borderRadius: '2px',
+    borderColor: '#103d3d',
+  }),
+  valueContainer: (provided) => ({
+    ...provided,
+    padding: '0',
+  }),
+  input: (provided) => ({
+    ...provided,
+    margin: '0',
+    padding: '0',
+  }),
+  placeholder: (provided) => ({
+    ...provided,
+    fontSize: '18px',
+    color: '#666',
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    fontSize: '18px',
+    padding: 12,
+    backgroundColor: state.isSelected
+      ? '#d9f9ff'
+      : state.isFocused
+      ? '#e9fbfd'
+      : 'white',
+    borderLeft: state.isSelected ? '4px solid #1dd3f5' : 'none',
+    color: '#000',
+    cursor: 'pointer',
+  }),
+  menuList: (provided) => ({
+    ...provided,
+    maxHeight: '200px', // Limit to 4 visible options
+    overflowY: 'auto',
+  }),
+};
+
+
 
   // Form data state
   const [formData, setFormData] = useState({
@@ -54,8 +99,36 @@ export default function SignUp() {
       title: "Account Info",
       inputs: ["income", "investment", "citizen", "employed", "marital", "activities", "health", "substances", "hiv", "name"]
     },
-    { title: "Confirmation", inputs: ["review"] },
+    { title: "Estimate Confirmation", inputs: ["review"] },
   ];
+
+  const heightOptions = [
+    { value: "", label: "Select Height" },
+    { value: "<4'8", label: "< 4'8\"" },
+    { value: "4'8", label: "4'8\"" },
+    { value: "4'9", label: "4'9\"" },
+    { value: "4'10", label: "4'10\"" },
+    { value: "4'11", label: "4'11\"" },
+    { value: "5'0", label: "5'0\"" },
+    { value: "5'1", label: "5'1\"" },
+    { value: "5'2", label: "5'2\"" },
+    { value: "5'3", label: "5'3\"" },
+    { value: "5'4", label: "5'4\"" },
+    { value: "5'5", label: "5'5\"" },
+    { value: "5'6", label: "5'6\"" },
+    { value: "5'7", label: "5'7\"" },
+    { value: "5'8", label: "5'8\"" },
+    { value: "5'9", label: "5'9\"" },
+    { value: "5'10", label: "5'10\"" },
+    { value: "5'11", label: "5'11\"" },
+    { value: "6'0", label: "6'0\"" },
+    { value: "6'1", label: "6'1\"" },
+    { value: "6'2", label: "6'2\"" },
+    { value: "6'3", label: "6'3\"" },
+    { value: "6'4", label: "6'4\"" },
+    { value: ">6'4", label: "> 6'4\"" },
+  ];
+
 
   const [fade, setFade] = useState(true);
 
@@ -124,7 +197,7 @@ export default function SignUp() {
       case "investment":
         return formData.monthlyContribution >= min && formData.monthlyContribution <= max;
       case "citizen":
-        return value  ||formData.citizen !== '';
+        return value || formData.citizen !== '';
       case "employed":
         return value || formData.employed !== '';
       case "marital":
@@ -147,12 +220,12 @@ export default function SignUp() {
   };
 
   // Update form data
-  const updateFormData = (field, value, next= false) => {
+  const updateFormData = (field, value, next = false) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
-    
+
     // Clear error when user starts typing/selecting
     const currentField = currentStepInputs[currentInput];
     if (errors[currentField]) {
@@ -161,8 +234,8 @@ export default function SignUp() {
         [currentField]: null
       }));
     }
-    
-    if(next){
+
+    if (next) {
       nextInput(value);
     }
   };
@@ -198,7 +271,7 @@ export default function SignUp() {
 
   const nextInput = (value = "") => {
     const currentField = currentStepInputs[currentInput];
-    
+
     if (!isCurrentInputValid(value)) {
       // Set error for current field
       setErrors(prev => ({
@@ -230,7 +303,7 @@ export default function SignUp() {
       }
       setFade(true);
     }, 300);
-    if(step === 1 && currentInput === 9){
+    if (step === 1 && currentInput === 9) {
       handleSubmit();
     }
   };
@@ -459,9 +532,9 @@ export default function SignUp() {
                                 What is your investment risk tolerance?
                               </h1>
                               {[
-                                {label: "I prefer high risk, with high-reward potential", value: "High risk"},
-                                {label: "I prefer moderate risk, with moderate-reward potential", value: "Moderate risk"},
-                                {label: "I prefer low risk, with low-reward potential", value:"Low risk"}
+                                { label: "I prefer high risk, with high-reward potential", value: "High risk" },
+                                { label: "I prefer moderate risk, with moderate-reward potential", value: "Moderate risk" },
+                                { label: "I prefer low risk, with low-reward potential", value: "Low risk" }
                               ].map((item, index) => (
                                 <div
                                   key={index}
@@ -618,8 +691,7 @@ export default function SignUp() {
                                   style={{
                                     position: "absolute",
                                     top: "-40px",
-                                    left: `calc(${
-                                      ((sliderValue - min) / (max - min)) * 100
+                                    left: `calc(${((sliderValue - min) / (max - min)) * 100
                                       }% - 8px)`,
                                     backgroundColor: "#1e2a5a",
                                     color: "white",
@@ -636,7 +708,7 @@ export default function SignUp() {
                                   type="range"
                                   min={min}
                                   max={max}
-                                  step={100}
+                                  step={50}
                                   value={sliderValue}
                                   onChange={(e) => {
                                     const value = Number(e.target.value);
@@ -654,7 +726,7 @@ export default function SignUp() {
                               <div className="didYouNow">
                                 <div className="row align-items-center">
                                   <div className="col-lg-4 text-center">
-                                    <Image src={images.benifit1} width={130} height={160} alt="image"/>
+                                    <Image src={images.benifit1} width={130} height={160} alt="image" />
                                   </div>
                                   <div className="col-lg-8">
                                     <h4>DID YOU KNOW?</h4>
@@ -803,50 +875,26 @@ export default function SignUp() {
                           {currentInput === 6 && (
                             <>
                               <div className="row">
-                                <div className="col-lg-12 mb-3 ">
-                                  <label htmlFor="height" className="select-label">
-                                    Height (ft)
-                                  </label>
-                                  <select
+                                <div className="col-lg-12 mb-3">
+                                  <label htmlFor="height" className="select-label">Height (ft)</label>
+                                  <Select
                                     id="height"
-                                    className="custom-select"
-                                    value={formData.height}
-                                    onChange={(e) => updateFormData('height', e.target.value)}
-                                  >
-                                    <option value="">Select Height</option>
-                                    <option value="<4'8">&lt; 4&apos;8&quot;</option>
-                                    <option value="4'8">4&apos;&quot;</option>
-                                    <option value="4'9">4&apos;&quot;</option>
-                                    <option value="4'10">4&apos;1&quot;</option>
-                                    <option value="4'11">4&apos;1&quot;</option>
-                                    <option value="5'0">5&apos;&quot;</option>
-                                    <option value="5'1">5&apos;&quot;</option>
-                                    <option value="5'2">5&apos;&quot;</option>
-                                    <option value="5'3">5&apos;&quot;</option>
-                                    <option value="5'4">5&apos;&quot;</option>
-                                    <option value="5'5">5&apos;&quot;</option>
-                                    <option value="5'6">5&apos;&quot;</option>
-                                    <option value="5'7">5&apos;&quot;</option>
-                                    <option value="5'8">5&apos;&quot;</option>
-                                    <option value="5'9">5&apos;&quot;</option>
-                                    <option value="5'10">5&apos;1&quot;</option>
-                                    <option value="5'11">5&apos;1&quot;</option>
-                                    <option value="6'0">6&apos;&quot;</option>
-                                    <option value="6'1">6&apos;&quot;</option>
-                                    <option value="6'2">6&apos;&quot;</option>
-                                    <option value="6'3">6&apos;&quot;</option>
-                                    <option value="6'4">6&apos;&quot;</option>
-                                    <option value=">6'4">&gt; 6&apos;&quot;</option>
-                                  </select>
+                                    classNamePrefix="custom"
+                                    styles={customStyles}
+                                    options={heightOptions}
+                                    onChange={(selected) => updateFormData('height', selected?.value || '')}
+                                    placeholder="Select Height"
+                                  />
                                 </div>
-                                <div className="col-lg-12 mb-3 ">
+
+                                <div className="col-lg-12 mb-3">
                                   <label htmlFor="weight" className="input-label">Weight (lbs)</label>
                                   <div className="input-wrapper">
                                     <input
                                       type="number"
                                       id="weight"
                                       className="weight-input"
-                                      placeholder="234"
+                                      placeholder=""
                                       value={formData.weight}
                                       onChange={(e) => updateFormData('weight', e.target.value)}
                                     />
@@ -1009,34 +1057,34 @@ export default function SignUp() {
           </div>
         </div>
         <div className="fixed-bottom-nav">
-  <div className="container">
-    <div className="row">
-      <div className="col-12">
-        <div className="d-flex justify-content-center gap-3">
-          {/* Your existing navigation buttons */}
-            {(step > 0 || currentInput > 0) && (
-                        <button className="steperBack" onClick={prevInput}>
-                          <FaArrowLeft />
-                        </button>
-                      )}
-                      {(step < steps.length - 1 ||
-                        currentInput < currentStepInputs.length - 1) && (
-                          <button className="commonBtn" onClick={nextInput}>
-                            Next
-                          </button>
-                        )}
+          <div className="container">
+            <div className="row">
+              <div className="col-12">
+                <div className="d-flex justify-content-center gap-3">
+                  {/* Your existing navigation buttons */}
+                  {(step > 0 || currentInput > 0) && (
+                    <button className="steperBack" onClick={prevInput}>
+                      <FaArrowLeft />
+                    </button>
+                  )}
+                  {(step < steps.length - 1 ||
+                    currentInput < currentStepInputs.length - 1) && (
+                      <button className="commonBtn" onClick={nextInput}>
+                        Next
+                      </button>
+                    )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div className="row mt-auto">
+        <div className="col-12">
+          <div className="d-flex justify-content-center my-4 gap-3">
+
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-      </section>
-                      <div className="row mt-auto">
-                  <div className="col-12">
-                    <div className="d-flex justify-content-center my-4 gap-3">
-                    
-                    </div>
-                  </div>
-                </div>
     </>);
 }
