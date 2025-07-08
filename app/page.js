@@ -1003,10 +1003,18 @@ export default function SignUp() {
                 </div>
 
                 {/* Navigation Buttons */}
-                <div className="row mt-auto">
-                  <div className="col-12">
-                    <div className="d-flex justify-content-center my-4 gap-3">
-                      {(step > 0 || currentInput > 0) && (
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="fixed-bottom-nav">
+  <div className="container">
+    <div className="row">
+      <div className="col-12">
+        <div className="d-flex justify-content-center gap-3">
+          {/* Your existing navigation buttons */}
+            {(step > 0 || currentInput > 0) && (
                         <button className="steperBack" onClick={prevInput}>
                           <FaArrowLeft />
                         </button>
@@ -1017,13 +1025,18 @@ export default function SignUp() {
                             Next
                           </button>
                         )}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      </section>
+                      <div className="row mt-auto">
+                  <div className="col-12">
+                    <div className="d-flex justify-content-center my-4 gap-3">
+                    
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </>);
 }
