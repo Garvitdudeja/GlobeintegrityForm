@@ -15,19 +15,19 @@ const NavItems = {
     {
       heading: "Whole Life Insurance",
       description: "Highest level of tax advantaged growth with low fees",
-      path: "https://globeintegrity2.vercel.app/product/whole-life",
+      path: "https://globeintegrity.com/product/whole-life",
       image: images.veriable
     },
     {
       heading: "Indexed Universal Life",
       description: "Tax advantaged, moderate growth with downside protection",
-      path: "https://globeintegrity2.vercel.app/product/iul",
+      path: "https://globeintegrity.com/product/iul",
       image: images.universal
     },
     {
       heading: "Term Life",
       description: "Fast and affordable term policies",
-      path: "https://globeintegrity2.vercel.app/product/term",
+      path: "https://globeintegrity.com/product/term",
       image: images.life
     },
     // {
@@ -47,13 +47,13 @@ const NavItems = {
     {
       heading: "Life Insurance Calculator",
       description: "Determine your coverage need and ideal product fit in a few quick steps",
-      path: "https://globeintegrity2.vercel.app/calculator",
+      path: "https://globeintegrity.com/calculator",
       image: images.lifeCal
     },
     {
       heading: "FAQs",
       description: "Expert answers to your top questions",
-      path: "https://globeintegrity2.vercel.app/faq",
+      path: "https://globeintegrity.com/faq",
       image: images.faqs
     },
   ]

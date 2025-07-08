@@ -11,7 +11,7 @@ const EstimateCard = ({ data, next }) => {
         <h4>Want to review your estimate with a licensed expert?</h4>
         <p>Schedule a quick call now.</p>
         <button className="btn btn-primary me-3" onClick={next}>Schedule</button>
-        <Link href="https://globeintegrity2.vercel.app/" className="text-decoration-underline">Skip for now</Link>
+        <Link href="https://globeintegrity.com/" className="text-decoration-underline">Skip for now</Link>
       </div>
 
       <div className="mb-4">
