@@ -28,7 +28,7 @@ const EstimateSent = ({ data, next }) => {
 
         <div className="mt-4">
           <p className="mb-2 fw-medium">Want help reviewing it?</p>
-          <Button variant="commonBtn" className="mainButton" onClick={next}>
+          <Button variant="commonBtn" className="mainButton" onClick={()=>{next("",1)}}>
             Schedule a Free Call →
           </Button>
         </div>

@@ -103,7 +103,7 @@ export default function SignUp() {
       title: "Account Info",
       inputs: ["income", "investment", "citizen", "employed", "marital", "activities", "health", "substances", "hiv", "name"]
     },
-    { title: "Estimate Confirmation", inputs: ["review", "booking"] },
+    { title: "Estimate Confirmation", inputs: ["review", "booking", "confirm"] },
   ];
 
   const heightOptions = [
@@ -245,6 +245,10 @@ export default function SignUp() {
         return value || formData.hivStatus !== '';
       case "review":
         return true;
+      case "confirm":
+        return true;
+      case "booking":
+        return true;
       case "name":
         return formData.First_Name !== '' && formData.Last_Name !== '' && formData.Email !== '' && formData.Phone !== '';
       default:
@@ -302,7 +306,7 @@ export default function SignUp() {
     }
   };
 
-  const nextInput = (value = "") => {
+  const nextInput = (value = "", userStep) => {
     const currentField = currentStepInputs[currentInput];
     console.log(value, currentField, isCurrentInputValid(value), "isCurrentInputValid");
 
@@ -329,11 +333,16 @@ export default function SignUp() {
 
     setFade(false);
     setTimeout(() => {
-      if (currentInput < currentStepInputs.length - 1) {
+
+      if(!userStep){
+        if (currentInput < currentStepInputs.length - 1) {
         setCurrentInput(prev => prev + 1);
       } else if (step < steps.length - 1) {
         setStep(prev => prev + 1);
         setCurrentInput(0);
+      }
+      }else{
+        setCurrentInput(userStep)
       }
       setFade(true);
     }, 300);
@@ -1085,6 +1094,8 @@ export default function SignUp() {
                       {step === 2 && (
                         <>{currentInput === 0 && <ScheduleCallCard data={formData} next={nextInput} />}
                           {currentInput === 1 && <iframe width='100%' title="zohoBookings" height='750px' src={`https://wealthmanagement.zohobookings.com/portal-embed#/4491295000001065010?Name=${formData.First_Name + " " + formData.Last_Name}&Email=${formData.Email}`} frameborder='0' allowfullscreen='' > </iframe>}
+                          {currentInput === 2 && <EstimateCard data={formData} next={nextInput} />}
+
                         </>
                       )}
 
