@@ -42,7 +42,7 @@ const ScheduleCallCard = ({data, next}) => {
         <p className="text-center mt-3 mb-1">or</p>
 
         <p className="text-center">
-          <h5 className="fw-bold text-decoration-none blueText" onClick={()=>{next("",2)}}>Email Me My Estimate</h5>
+          <h5 className="fw-bold text-decoration-none blueText" role='button' onClick={()=>{next("",2)}}>Email Me My Estimate</h5>
         </p>
         <p className="text-center text-muted" style={{ fontSize: '0.9rem' }}>
           We’ll send a summary to your inbox.
