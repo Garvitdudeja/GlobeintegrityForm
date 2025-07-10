@@ -9,6 +9,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import Select from 'react-select';
 import EstimateCard from "@/Components/EstimateCards";
+import ScheduleCallCard from "@/Components/ScheduleCallCard";
 
 
 export default function SignUp() {
@@ -1082,8 +1083,8 @@ export default function SignUp() {
                       )}
 
                       {step === 2 && (
-                        <>{currentInput === 0 && <EstimateCard data={formData} next={nextInput} />}
-                          {currentInput === 1 && <iframe width='100%' title="zohoBookings" height='750px' src={`https://wealthmanagement.zohobookings.com/portal-embed#/4491295000001065010?Name=${formData.First_Name + " " + formData.Last_Name}&Email=${formData.Email}}`} frameborder='0' allowfullscreen='' > </iframe>}
+                        <>{currentInput === 0 && <ScheduleCallCard data={formData} next={nextInput} />}
+                          {currentInput === 1 && <iframe width='100%' title="zohoBookings" height='750px' src={`https://wealthmanagement.zohobookings.com/portal-embed#/4491295000001065010?Name=${formData.First_Name + " " + formData.Last_Name}&Email=${formData.Email}`} frameborder='0' allowfullscreen='' > </iframe>}
                         </>
                       )}
 

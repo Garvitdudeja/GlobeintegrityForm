@@ -15,7 +15,7 @@ const EstimateSent = ({ data, next }) => {
           <MdOutlineMail  size={34} className='mb-1'/> Estimate Sent!
         </h3>
         <p>We’ve sent your custom life insurance estimate to:</p>
-        <h5 className="fw-bold">swolkov@me.com</h5>
+        <h5 className="fw-bold">{data?.Email}</h5>
 
         <div className="mt-4">
           <h6 className="fw-bold">What’s Inside:</h6>
