@@ -1,45 +1,40 @@
-// components/EstimateCard.js
 import Link from 'next/link';
 import React from 'react';
-import { estimateCoverageAndValue } from './CommonFunctions';
+import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 
-const EstimateCard = ({ data, next }) => {
-    const {coverage, estimatedValue} = estimateCoverageAndValue(data)
+const EstimateSent = ({ data, next }) => {
   return (
-    <div className="container my-5">
-      <div className="mb-4">
-        <h4>Want to review your estimate with a licensed expert?</h4>
-        <p>Schedule a quick call now.</p>
-        <button className="btn btn-primary me-3" onClick={next}>Schedule</button>
-        <Link href="https://globeintegrity.com/" className="text-decoration-underline">Skip for now</Link>
-      </div>
+    <Container className="d-flex justify-content-center align-items-center">
+      <Card className="p-4 shadow" style={{ maxWidth: '500px', width: '100%' }}>
+        <h3 className="text-primary mb-3">
+          📩 Estimate Sent!
+        </h3>
+        <p>We’ve sent your custom life insurance estimate to:</p>
+        <h5 className="fw-bold">swolkov@me.com</h5>
 
-      <div className="mb-4">
-        <h3>Your estimate is ready!</h3>
-        <p>Based on <strong>your</strong> answers, we&apos;ve selected the best life insurance option for you.</p>
-      </div>
-
-      <div className="border rounded p-4 shadow-sm">
-        <h5 className="text-primary fw-bold">Indexed Universal Life</h5>
-        <h2 className="fw-bold">${data?.monthlyContribution} <small className="fs-5 text-muted">per month</small></h2>
-
-        <div className="d-flex justify-content-between mt-3">
-          <div>
-            <small className="text-muted">Estimated Value at 65</small>
-            <h5 className="fw-bold">${estimatedValue}</h5>
-          </div>
-          <div>
-            <small className="text-muted">Coverage</small>
-            <h5 className="fw-bold">${coverage}</h5>
-          </div>
+        <div className="mt-4">
+          <h6 className="fw-bold">What’s Inside:</h6>
+          <ul className="list-unstyled ms-2">
+            <li>💲 Your monthly contribution</li>
+            <li>📈 Projected cash value</li>
+            <li>💡 Overview of your potential policy</li>
+          </ul>
         </div>
 
-        <div className="mt-4 d-flex gap-2">
-          <button className="btn btn-info text-white" onClick={next}>Apply Now</button>
+        <div className="mt-4">
+          <p className="mb-2 fw-medium">Want help reviewing it?</p>
+          <Button variant="commonBtn" className="mainButton" onClick={next}>
+            Schedule a Free Call →
+          </Button>
         </div>
-      </div>
-    </div>
+
+        <p className="text-muted mt-3" style={{ fontSize: '0.9rem' }}>
+          If you don’t see it in your inbox within a few minutes, check your spam or promotions folder.
+        </p>
+        <Link href="https://globeintegrity.com/" className="text-decoration-none mt-2 d-block">Back to Homepage</Link>
+      </Card>
+    </Container>
   );
 };
 
-export default EstimateCard;
+export default EstimateSent;

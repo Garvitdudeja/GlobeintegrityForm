@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import Select from 'react-select';
 import EstimateCard from "@/Components/EstimateCards";
 
+
 export default function SignUp() {
   const router = useRouter()
 
@@ -1079,7 +1080,7 @@ export default function SignUp() {
                   {(step < steps.length - 1 ||
                     currentInput < currentStepInputs.length - 1) && (
                       <button className="commonBtn" onClick={() => nextInput("")}>
-                        Next
+                        {step == 1 && currentInput == 9 ? "Submit":"Next"}
                       </button>
                     )}
                 </div>

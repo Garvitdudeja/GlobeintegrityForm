@@ -918,3 +918,9 @@ opacity: 1;
 .custom__option--is-focused {
   background-color: #e6f8ec;
 }
+
+
+.mainButton{
+  background-color: #1dd3f5 !important;
+  color: white !important;
+}
