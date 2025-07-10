@@ -152,7 +152,7 @@ export default function SignUp() {
       case "gender":
         return "Please select your gender.";
       case "dob":
-        return "Please enter a valid date of birth (DD/MM/YYYY).";
+        return "Please enter a valid date of birth (MM/DD/YYYY).";
       case "zipCode":
         return "Please enter your zip code.";
       case "income":
@@ -179,6 +179,34 @@ export default function SignUp() {
         return "This field is required.";
     }
   };
+  function isValidDOB(dob) {
+  // Check if format is MM/DD/YYYY using regex
+  const regex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}$/;
+  if (!regex.test(dob)) return false;
+
+  const [month, day, year] = dob.split('/').map(Number);
+  const dobDate = new Date(year, month - 1, day); // JS months are 0-indexed
+  const now = new Date();
+
+  // Check if constructed date matches input (handles Feb 30, etc.)
+  if (
+    dobDate.getFullYear() !== year ||
+    dobDate.getMonth() !== month - 1 ||
+    dobDate.getDate() !== day
+  ) {
+    return false;
+  }
+
+  // Must not be in the future
+  if (dobDate > now) return false;
+
+  // Optional: Check if age is >= 18
+  const age = now.getFullYear() - year - (now < new Date(year, month - 1, day) ? 1 : 0);
+  if (age < 18) return false;
+
+  return true;
+}
+
 
   // Validation function
   const isCurrentInputValid = (value) => {
@@ -193,7 +221,7 @@ export default function SignUp() {
       case "gender":
         return value || formData.gender !== '';
       case "dob":
-        return formData.dob !== '' && formData.dob.length === 10;
+        return formData.dob !== '' && isValidDOB(formData.dob);
       case "zipCode":
         return formData.zipCode !== '';
       case "income":
@@ -400,15 +428,18 @@ export default function SignUp() {
 
   // Date input handler
   const handleDateInput = (e) => {
-    let input = e.target.value.replace(/\D/g, ""); // Remove non-digits
-    if (input.length > 2 && input.length <= 4) {
-      input = input.slice(0, 2) + "/" + input.slice(2);
-    } else if (input.length > 4) {
-      input =
-        input.slice(0, 2) + "/" + input.slice(2, 4) + "/" + input.slice(4, 8);
-    }
-    updateFormData('dob', input);
-  };
+  let input = e.target.value.replace(/\D/g, "").slice(0, 8); // Max 8 digits
+
+  let formatted = input;
+  if (input.length >= 3 && input.length <= 4) {
+    formatted = input.slice(0, 2) + "/" + input.slice(2);
+  } else if (input.length > 4) {
+    formatted = input.slice(0, 2) + "/" + input.slice(2, 4) + "/" + input.slice(4);
+  }
+
+  updateFormData('dob', formatted);
+};
+
 
   const percentage = ((sliderValue - min) / (max - min)) * 100;
 
@@ -605,13 +636,13 @@ export default function SignUp() {
                                 <input
                                   type="text"
                                   id="date"
-                                  placeholder="DD/MM/YYYY"
+                                  placeholder="MM/DD/YYYY"
                                   maxLength={10}
                                   value={formData.dob}
                                   onChange={handleDateInput}
                                   required
                                 />
-                                <label htmlFor="date">DD/MM/YYYY</label>
+                                <label htmlFor="date">MM/DD/YYYY</label>
                               </div>
                               {errors[getCurrentField()] && (
                                 <p className="text-danger mt-3" style={{ fontSize: '14px', marginBottom: '10px' }}>
