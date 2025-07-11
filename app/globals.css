@@ -54,6 +54,7 @@ p{
 body{
   position: fixed;
   height: 100%;
+  width: 100%;
 }
 
 /* Start Steper Css */
