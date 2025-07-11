@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaArrowLeft } from "react-icons/fa";
 import "react-datepicker/dist/react-datepicker.css";
@@ -14,7 +14,6 @@ import ScheduleCallCard from "@/Components/ScheduleCallCard";
 
 export default function SignUp() {
   const router = useRouter()
-
   const [step, setStep] = useState(0);
   const [currentInput, setCurrentInput] = useState(0);
   const [sliderValue, setSliderValue] = useState(250);
@@ -208,6 +207,20 @@ export default function SignUp() {
   return true;
 }
 
+ const [token, setToken] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.grecaptcha) {
+      window.grecaptcha.ready(() => {
+        window.grecaptcha
+          .execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY, { action: 'submit' })
+          .then((token) => {
+            setToken(token); // Save token for API
+          });
+      });
+    }
+  }, []);
+
 
   // Validation function
   const isCurrentInputValid = (value) => {
@@ -398,6 +411,8 @@ export default function SignUp() {
   // Handle form submission
   const handleSubmit = async () => {
     try {
+            const token = await executeRecaptcha("form_submit");
+            console.log(token);
       const response = await axios.post('/api/submit', {
         data: {
           High_risk_Activities: formData.activities.join(', '),
@@ -419,7 +434,8 @@ export default function SignUp() {
           Last_Name: formData.Last_Name,
           First_Name: formData.First_Name,
           Email: formData.Email,
-          Phone: formData.Phone
+          Phone: formData.Phone,
+          recaptchaToken: token
         }
       });
       router.push("/");
@@ -428,6 +444,7 @@ export default function SignUp() {
       alert('There was an error submitting the form.');
     }
   };
+  console.log(token, "token")
 
   // Progress within current step
   const stepProgress =

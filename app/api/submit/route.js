@@ -1,33 +1,59 @@
 import axios from 'axios';
+import FormData from 'form-data';
 
 export async function POST(request) {
   try {
-    const { data } = await request.json(); // JSON object
+    const body = await request.json();
+    const { data, recaptchaToken } = body;
+
     console.log("Incoming data:", data);
 
-    // Prepare form-data object
+    // 1. Verify reCAPTCHA token with Google
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify`;
+
+    const recaptchaRes = await axios.post(
+      verifyUrl,
+      new URLSearchParams({
+        secret: recaptchaSecret,
+        response: recaptchaToken,
+      }).toString(),
+      {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      }
+    );
+
+    const recaptchaData = recaptchaRes.data;
+    if (!recaptchaData.success || recaptchaData.score < 0.5) {
+      return new Response(
+        JSON.stringify({ error: 'reCAPTCHA verification failed', score: recaptchaData.score }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
+    // 2. Send to Zoho CRM if reCAPTCHA passed
     const formData = new FormData();
     formData.append('arguments', JSON.stringify(data));
 
-    const targetApiUrl = 'https://www.zohoapis.com/crm/v7/functions/add_leads/actions/execute' +
-      '?auth_type=apikey&zapikey=1003.ea52eed87a0014942321fe35b0a9b557.2958e2de5bb055884936bb746b431c82';
-
-    const response = await axios.post(targetApiUrl, formData, {
-      headers: formData.getHeaders 
-        ? formData.getHeaders() 
-        : { 'Content-Type': 'multipart/form-data' } // browser vs Node.js
+    const response = await axios.post(process.env.ZOHO_API_PATH, formData, {
+      headers: formData.getHeaders()
     });
-    console.log(response.data.details.userMessage, "response")
 
     return new Response(JSON.stringify(response.data), {
       status: response.status,
       headers: { 'Content-Type': 'application/json' }
     });
   } catch (err) {
-    console.error("Zoho API error:", err);
-    return new Response(JSON.stringify({ error: err.message }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    console.error("Zoho API error:", err?.response?.data || err.message);
+    return new Response(
+      JSON.stringify({ error: err?.response?.data || err.message }),
+      {
+        status: err?.response?.status || 500,
+        headers: { 'Content-Type': 'application/json' }
+      }
+    );
   }
 }

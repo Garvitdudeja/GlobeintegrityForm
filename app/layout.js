@@ -5,6 +5,7 @@ import Header from "@/Components/Header";
 import Footer from "@/Components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import BootstrapClient from "./bootstrap-client"; // ✅ Correct import
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,12 +27,19 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head />
       <body>
+             <Script
+        src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+        strategy="afterInteractive"
+      />
         {/* ✅ Place it here inside <body> so it runs client-side */}
+          {/* <ReCaptchaProvider reCaptchaKey="[GTM-MSQCH4CB]"> */}
+
         <BootstrapClient />
 
         <Header />
         {children}
         {/* <Footer /> */}
+        {/* </ReCaptchaProvider> */}
       </body>
     </html>
   );
