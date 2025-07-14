@@ -51,6 +51,12 @@ p{
   margin-bottom: 0;
 }
 
+body{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
 /* Start Steper Css */
 /* Add this to your global CSS or module file */
 .react-form-stepper {
@@ -393,6 +399,7 @@ background-color:rgb(45, 50, 105);
   overflow-x: hidden;
   scrollbar-width: none; 
   -ms-overflow-style: none;
+  padding-bottom: 90px;
 }
 
 .seletDateOuter {
