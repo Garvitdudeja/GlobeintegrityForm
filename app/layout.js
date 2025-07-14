@@ -6,6 +6,7 @@ import Footer from "@/Components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import BootstrapClient from "./bootstrap-client"; // ✅ Correct import
 import Script from "next/script";
+import GoogleConversion from "@/Components/GoogleConversion";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
       />
         <BootstrapClient />
         <Header />
+        <GoogleConversion />
         {children}
       </body>
     </html>
