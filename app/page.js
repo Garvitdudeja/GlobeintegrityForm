@@ -1087,7 +1087,7 @@ export default function SignUp() {
                               />
                               <label htmlFor="Phone">Phone</label>
                             </div>
-                            <div className="d-flex flex-row gap-3 pt-4">
+                            <div className="d-flex flex-row gap-3 pt-4 align-items-start">
                               <div className="custom-checkbox-wrapper mt-1">
                                 <input
                                   type="checkbox"
