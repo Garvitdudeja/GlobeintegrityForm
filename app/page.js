@@ -209,17 +209,18 @@ export default function SignUp() {
 
  const [token, setToken] = useState('');
 
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.grecaptcha) {
-      window.grecaptcha.ready(() => {
-        window.grecaptcha
-          .execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY, { action: 'submit' })
-          .then((token) => {
-            setToken(token); // Save token for API
-          });
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined' && window.grecaptcha) {
+  //     window.grecaptcha.ready(() => {
+  //       window.grecaptcha
+  //         .execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY, { action: 'submit' })
+  //         .then((token) => {
+  //           console.log(token, "token");
+  //           setToken(token); // Save token for API
+  //         });
+  //     });
+  //   }
+  // }, []);
 
 
   // Validation function
@@ -411,8 +412,8 @@ export default function SignUp() {
   // Handle form submission
   const handleSubmit = async () => {
     try {
-            const token = await executeRecaptcha("form_submit");
-            console.log(token);
+            // const token = await executeRecaptcha("form_submit");
+            // console.log(token);
       const response = await axios.post('/api/submit', {
         data: {
           High_risk_Activities: formData.activities.join(', '),
@@ -435,7 +436,7 @@ export default function SignUp() {
           First_Name: formData.First_Name,
           Email: formData.Email,
           Phone: formData.Phone,
-          recaptchaToken: token
+          // recaptchaToken: token
         }
       });
       router.push("/");
@@ -716,7 +717,7 @@ export default function SignUp() {
                               </h1>
                               <div className="seletDateOuter">
                                 <input
-                                  type="text"
+                                  type="number"
                                   id="household"
                                   placeholder="Household Income"
                                   value={formData.householdIncome}
@@ -726,7 +727,7 @@ export default function SignUp() {
                               </div>
                               <div className="seletDateOuter">
                                 <input
-                                  type="text"
+                                  type="number"
                                   id="personal"
                                   placeholder="Personal Income"
                                   value={formData.personalIncome}

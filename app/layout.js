@@ -23,6 +23,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head />
@@ -31,15 +32,9 @@ export default function RootLayout({ children }) {
         src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
         strategy="afterInteractive"
       />
-        {/* ✅ Place it here inside <body> so it runs client-side */}
-          {/* <ReCaptchaProvider reCaptchaKey="[GTM-MSQCH4CB]"> */}
-
         <BootstrapClient />
-
         <Header />
         {children}
-        {/* <Footer /> */}
-        {/* </ReCaptchaProvider> */}
       </body>
     </html>
   );

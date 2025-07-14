@@ -12,27 +12,27 @@ export async function POST(request) {
     const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
     const verifyUrl = `https://www.google.com/recaptcha/api/siteverify`;
 
-    const recaptchaRes = await axios.post(
-      verifyUrl,
-      new URLSearchParams({
-        secret: recaptchaSecret,
-        response: recaptchaToken,
-      }).toString(),
-      {
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-      }
-    );
+    // const recaptchaRes = await axios.post(
+    //   verifyUrl,
+    //   new URLSearchParams({
+    //     secret: recaptchaSecret,
+    //     response: recaptchaToken,
+    //   }).toString(),
+    //   {
+    //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    //   }
+    // );
 
-    const recaptchaData = recaptchaRes.data;
-    if (!recaptchaData.success || recaptchaData.score < 0.5) {
-      return new Response(
-        JSON.stringify({ error: 'reCAPTCHA verification failed', score: recaptchaData.score }),
-        {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' }
-        }
-      );
-    }
+    // const recaptchaData = recaptchaRes.data;
+    // if (!recaptchaData.success || recaptchaData.score < 0.5) {
+    //   return new Response(
+    //     JSON.stringify({ error: 'reCAPTCHA verification failed', score: recaptchaData.score }),
+    //     {
+    //       status: 400,
+    //       headers: { 'Content-Type': 'application/json' }
+    //     }
+    //   );
+    // }
 
     // 2. Send to Zoho CRM if reCAPTCHA passed
     const formData = new FormData();
