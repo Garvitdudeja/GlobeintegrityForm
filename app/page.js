@@ -367,7 +367,7 @@ export default function SignUp() {
         console.log(token, "token");
         if(token){
          const data =  await axios.post("/api/verifyRecaptcha",{token});
-         console.log(data, "data")
+         console.log(data, "data", "done");
         }
     }
     if (step === 1 && currentInput === 9) {
