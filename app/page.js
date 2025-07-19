@@ -366,7 +366,7 @@ export default function SignUp() {
         console.log(token, "token");
         if(token){
          const data =  await axios.post("/api/verifyRecaptcha",{token});
-         console.log(data, "data", "done");
+         setToken(data?.data?.score);
         }
     }
     if (step === 1 && currentInput === 9) {
@@ -445,7 +445,7 @@ export default function SignUp() {
           First_Name: formData.First_Name,
           Email: formData.Email,
           Phone: formData.Phone,
-          recaptchaToken: token
+          Human: token
         }
       });
       router.push("/");
