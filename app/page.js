@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import Select from 'react-select';
 import EstimateCard from "@/Components/EstimateCards";
 import ScheduleCallCard from "@/Components/ScheduleCallCard";
+import { useRecaptcha } from "@/Utils/Hooks";
 
 
 export default function SignUp() {
@@ -18,6 +19,8 @@ export default function SignUp() {
   const [currentInput, setCurrentInput] = useState(0);
   const [sliderValue, setSliderValue] = useState(250);
   const [errors, setErrors] = useState({});
+  const { isReady, executeRecaptcha } = useRecaptcha();
+  const [token, setToken] = useState('');
   const min = 100;
   const max = 1000;
   const customStyles = {
@@ -207,7 +210,6 @@ export default function SignUp() {
   return true;
 }
 
- const [token, setToken] = useState('');
 
   // useEffect(() => {
   //   if (typeof window !== 'undefined' && window.grecaptcha) {
@@ -320,7 +322,7 @@ export default function SignUp() {
     }
   };
 
-  const nextInput = (value = "", userStep) => {
+  const nextInput = async(value = "", userStep) => {
     const currentField = currentStepInputs[currentInput];
     console.log(value, currentField, isCurrentInputValid(value), "isCurrentInputValid");
 
@@ -360,6 +362,14 @@ export default function SignUp() {
       }
       setFade(true);
     }, 300);
+    if(step === 0 && currentInput === 1){
+        const token = await executeRecaptcha('contact_form');
+        console.log(token, "token");
+        if(token){
+         const data =  await axios.post("/api/verifyRecaptcha",{token});
+         console.log(data, "data")
+        }
+    }
     if (step === 1 && currentInput === 9) {
       handleSubmit();
     }
@@ -436,7 +446,7 @@ export default function SignUp() {
           First_Name: formData.First_Name,
           Email: formData.Email,
           Phone: formData.Phone,
-          // recaptchaToken: token
+          recaptchaToken: token
         }
       });
       router.push("/");
@@ -445,7 +455,6 @@ export default function SignUp() {
       alert('There was an error submitting the form.');
     }
   };
-  console.log(token, "token")
 
   // Progress within current step
   const stepProgress =

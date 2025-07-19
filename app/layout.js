@@ -6,7 +6,7 @@ import Footer from "@/Components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import BootstrapClient from "./bootstrap-client"; // ✅ Correct import
 import Script from "next/script";
-import GoogleConversion from "@/Components/GoogleConversion";
+import GoogleConversion from "@/Components/GoolgeConversion";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,14 +24,20 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
 
 export default function RootLayout({ children }) {
 
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
-         {/* Google tag (gtag.js) */}
+        {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16453676009"></script>
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${SITE_KEY}`}
+          strategy="beforeInteractive"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -44,10 +50,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-             <Script
-        src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-        strategy="afterInteractive"
-      />
+
         <BootstrapClient />
         <Header />
         <GoogleConversion />
