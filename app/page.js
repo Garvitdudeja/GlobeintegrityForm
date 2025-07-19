@@ -445,7 +445,7 @@ export default function SignUp() {
           First_Name: formData.First_Name,
           Email: formData.Email,
           Phone: formData.Phone,
-          Human: token
+          Google_Recaptcha: token
         }
       });
       router.push("/");
