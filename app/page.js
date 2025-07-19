@@ -312,7 +312,6 @@ export default function SignUp() {
       }
     });
 
-    // Clear error when user makes a selection
     const currentField = currentStepInputs[currentInput];
     if (errors[currentField]) {
       setErrors(prev => ({
