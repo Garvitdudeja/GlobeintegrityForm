@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
         {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16453676009"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-TFGCS5C"></script>
         <Script
           src={`https://www.google.com/recaptcha/api.js?render=${SITE_KEY}`}
           strategy="beforeInteractive"
