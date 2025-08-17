@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Image from 'next/image'
 import * as images from '@/utilities/images'
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Select from 'react-select';
 import EstimateCard from "@/Components/EstimateCards";
 import ScheduleCallCard from "@/Components/ScheduleCallCard";
@@ -64,6 +64,7 @@ export default function SignUp() {
       overflowY: 'auto',
     }),
   };
+  const searchParams = useSearchParams()
 
 
 
@@ -71,18 +72,18 @@ export default function SignUp() {
   const [formData, setFormData] = useState({
     // Step 0 - Personal Info
     goal: [],
-    risk: '',
-    gender: '',
-    dob: '',
-    zipCode: '',
+    risk: searchParams.get('risk') ? searchParams.get('risk') + " risk" : '',
+    gender: searchParams.get("gender") || '',
+    dob: searchParams.get("dob") || '',
+    zipCode: searchParams.get('zipCode') || '',
 
     // Step 1 - Account Info
-    householdIncome: '',
+    householdIncome: searchParams.get('householdIncome') || '',
     personalIncome: '',
     monthlyContribution: 1000,
     citizen: '',
     employed: '',
-    maritalStatus: '',
+    maritalStatus: searchParams.get('maritalStatus') || '',
     activities: [],
     height: '',
     weight: '',
