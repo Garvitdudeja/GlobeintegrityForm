@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaArrowLeft } from "react-icons/fa";
 import "react-datepicker/dist/react-datepicker.css";
@@ -484,7 +484,8 @@ export default function SignUp() {
   const getCurrentField = () => currentStepInputs[currentInput];
 
   return (
-    <>
+        <Suspense fallback={<div>Loading...</div>}>
+
       {/* Stepper Header */}
       <section className="steperSection mb-5">
         <div className="container-fluid">
@@ -1168,5 +1169,5 @@ export default function SignUp() {
       </div>
 
 
-    </>);
+    </Suspense>);
 }
