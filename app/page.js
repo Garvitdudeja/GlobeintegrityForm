@@ -13,7 +13,7 @@ import ScheduleCallCard from "@/Components/ScheduleCallCard";
 import { useRecaptcha } from "@/Utils/Hooks";
 
 
-export default function SignUp() {
+export function SignUp() {
   const router = useRouter()
   const [step, setStep] = useState(0);
   const [currentInput, setCurrentInput] = useState(0);
@@ -484,8 +484,7 @@ export default function SignUp() {
   const getCurrentField = () => currentStepInputs[currentInput];
 
   return (
-        <Suspense fallback={<div>Loading...</div>}>
-
+    <>
       {/* Stepper Header */}
       <section className="steperSection mb-5">
         <div className="container-fluid">
@@ -1169,5 +1168,14 @@ export default function SignUp() {
       </div>
 
 
-    </Suspense>);
+    </>);
+}
+
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SignUp />
+    </Suspense>
+  );
 }
