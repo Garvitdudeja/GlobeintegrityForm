@@ -449,7 +449,6 @@ export function SignUp() {
           Google_Recaptcha: token
         }
       });
-      router.push("https://globeintegrity.com/thankyou");
     } catch (error) {
       console.error('Error submitting form:', error);
       alert('There was an error submitting the form.');
