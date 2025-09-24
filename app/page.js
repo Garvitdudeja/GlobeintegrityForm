@@ -78,8 +78,6 @@ export function SignUp() {
     zipCode: searchParams.get('zipCode') || '',
 
     // Step 1 - Account Info
-    householdIncome: searchParams.get('householdIncome') || '',
-    personalIncome: '',
     monthlyContribution: 1000,
     citizen: '',
     employed: '',
@@ -104,7 +102,7 @@ export function SignUp() {
     },
     {
       title: "Account Info",
-      inputs: ["income", "investment", "citizen", "employed", "marital", "activities", "health", "substances", "hiv", "name"]
+      inputs: ["investment", "citizen", "employed", "marital", "activities", "health", "substances", "hiv", "name"]
     },
     { title: "Estimate Confirmation", inputs: ["review", "booking", "confirm"] },
   ];
@@ -159,8 +157,6 @@ export function SignUp() {
         return "Please enter a valid date of birth (MM/DD/YYYY).";
       case "zipCode":
         return "Please enter your zip code.";
-      case "income":
-        return "Please enter both household and personal income.";
       case "investment":
         return "Please select a monthly contribution amount.";
       case "citizen":
@@ -242,8 +238,6 @@ export function SignUp() {
         return formData.dob !== '' && isValidDOB(formData.dob);
       case "zipCode":
         return formData.zipCode !== '';
-      case "income":
-        return formData.householdIncome !== '' && formData.personalIncome !== '';
       case "investment":
         return formData.monthlyContribution >= min && formData.monthlyContribution <= max;
       case "citizen":
@@ -370,7 +364,7 @@ export function SignUp() {
          setToken(data?.data?.score);
         }
     }
-    if (step === 1 && currentInput === 9) {
+    if (step === 1 && currentInput === 8) {
       handleSubmit();
     }
   };
@@ -721,38 +715,6 @@ export function SignUp() {
                           {currentInput === 0 && (
                             <>
                               <h1 className="heading54 mb-4">
-                                What is your annual income?
-                              </h1>
-                              <div className="seletDateOuter">
-                                <input
-                                  type="number"
-                                  id="household"
-                                  placeholder="Household Income"
-                                  value={formData.householdIncome}
-                                  onChange={(e) => updateFormData('householdIncome', e.target.value)}
-                                />
-                                <label htmlFor="household">Household Income</label>
-                              </div>
-                              <div className="seletDateOuter">
-                                <input
-                                  type="number"
-                                  id="personal"
-                                  placeholder="Personal Income"
-                                  value={formData.personalIncome}
-                                  onChange={(e) => updateFormData('personalIncome', e.target.value)}
-                                />
-                                <label htmlFor="personal">Personal Income</label>
-                              </div>
-                              {errors[getCurrentField()] && (
-                                <p className="text-danger mt-3" style={{ fontSize: '14px', marginBottom: '10px' }}>
-                                  {errors[getCurrentField()]}
-                                </p>
-                              )}
-                            </>
-                          )}
-                          {currentInput === 1 && (
-                            <>
-                              <h1 className="heading54 mb-4">
                                 What would be a comfortable monthly contribution?
                               </h1>
 
@@ -822,7 +784,7 @@ export function SignUp() {
                               )}
                             </>
                           )}
-                          {currentInput === 2 && (
+                          {currentInput === 1 && (
                             <>
                               <h1 className="heading54 mb-4">
                                 Are you a U.S. Citizen?
@@ -854,7 +816,7 @@ export function SignUp() {
                               )}
                             </>
                           )}
-                          {currentInput === 3 && (
+                          {currentInput === 2 && (
                             <>
                               <h1 className="heading54 mb-4">
                                 Are you currently employed?
@@ -886,7 +848,7 @@ export function SignUp() {
                               )}
                             </>
                           )}
-                          {currentInput === 4 && (
+                          {currentInput === 3 && (
                             <>
                               <h1 className="heading54 mb-4">
                                 What&apos;s your marital status?
@@ -911,7 +873,7 @@ export function SignUp() {
                               )}
                             </>
                           )}
-                          {currentInput === 5 && (
+                          {currentInput === 4 && (
                             <>
                               <h1 className="heading54 mb-4">
                                 Will you be performing any of the following activities in the next 2 years?
@@ -944,7 +906,7 @@ export function SignUp() {
                               )}
                             </>
                           )}
-                          {currentInput === 6 && (
+                          {currentInput === 5 && (
                             <div className="row">
                               <div className="col-lg-12 mb-3">
                               <label htmlFor="height" className="input-label">Height (ft)</label>
@@ -982,7 +944,7 @@ export function SignUp() {
                               )}
                             </div>
                           )}
-                          {currentInput === 7 && (
+                          {currentInput === 6 && (
                             <>
                               <h1 className="heading54">
                                 What products have you used in the last 5 years?
@@ -1016,7 +978,7 @@ export function SignUp() {
                               )}
                             </>
                           )}
-                          {currentInput === 8 && (
+                          {currentInput === 7 && (
                             <>
                               <h1 className="heading54 mb-4">
                                 Have you ever been diagnosed with AIDS, HIV, or AIDS-related complex (ARC)?
@@ -1051,9 +1013,9 @@ export function SignUp() {
                               )}
                             </>
                           )}
-                          {currentInput === 9 && (<>
+                          {currentInput === 8 && (<>
                             <h1 className="heading54 mb-4">
-                              We’re almost to your estimate.
+                              We're almost to your estimate.
                             </h1>
                             <p className="sub20  mb-4">
                               As a last step, we need your email and phone number.
