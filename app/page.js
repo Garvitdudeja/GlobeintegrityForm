@@ -947,15 +947,18 @@ export function SignUp() {
                           {currentInput === 6 && (
                             <div className="row">
                               <div className="col-lg-12 mb-3">
-                                <label htmlFor="height" className="select-label">Height (ft)</label>
-                                <Select
-                                  id="height"
-                                  classNamePrefix="custom"
-                                  styles={customStyles}
-                                  options={heightOptions}
-                                  onChange={(selected) => updateFormData('height', selected?.value || '')}
-                                  placeholder="Select Height"
-                                />
+                              <label htmlFor="height" className="input-label">Height (ft)</label>
+                                <div className="input-wrapper">
+                                  <input
+                                    type="number"
+                                    id="height"
+                                    className="weight-input"
+                                    placeholder=""
+                                    value={formData.height}
+                                    onChange={(e) => updateFormData('height', e.target.value)}
+                                  />
+                                  <span className="unit">ft</span>
+                                </div>
                               </div>
 
                               <div className="col-lg-12 mb-3">
