@@ -470,6 +470,34 @@ export function SignUp() {
   updateFormData('dob', formatted);
 };
 
+  // Height input handler - formats input as feet'inches (54->5'4, 511->5'11, 611->6'11)
+  const handleHeightInput = (e) => {
+    let input = e.target.value.replace(/\D/g, ""); // Only allow digits
+    
+    if (input === "") {
+      updateFormData('height', '');
+      return;
+    }
+    
+    // If input is 2 digits, format as feet'inches (54->5'4, 64->6'4)
+    if (input.length === 2) {
+      const feet = input.slice(0, 1); // First digit for feet
+      const inches = input.slice(-1); // Last digit for inches
+      const formatted = `${feet}'${inches}`;
+      updateFormData('height', formatted);
+    }
+    // If input is 3 digits, format as feet'inches (511->5'11, 611->6'11)
+    else if (input.length === 3) {
+      const feet = input.slice(0, 1); // First digit for feet
+      const inches = input.slice(1); // Last two digits for inches
+      const formatted = `${feet}'${inches}`;
+      updateFormData('height', formatted);
+    } else {
+      // If only 1 digit, just store it
+      updateFormData('height', input);
+    }
+  };
+
 
   const percentage = ((sliderValue - min) / (max - min)) * 100;
 
@@ -909,17 +937,17 @@ export function SignUp() {
                           {currentInput === 5 && (
                             <div className="row">
                               <div className="col-lg-12 mb-3">
-                              <label htmlFor="height" className="input-label">Height (ft)</label>
+                              <label htmlFor="height" className="input-label">Height</label>
                                 <div className="input-wrapper">
                                   <input
-                                    type="number"
+                                    type="text"
                                     id="height"
                                     className="weight-input"
-                                    placeholder=""
+                                    placeholder="Enter height (e.g., 54 for 5'4, 511 for 5'11)"
                                     value={formData.height}
-                                    onChange={(e) => updateFormData('height', e.target.value)}
+                                    onChange={handleHeightInput}
                                   />
-                                  <span className="unit">ft</span>
+                                  <span className="unit">ft'in</span>
                                 </div>
                               </div>
 
