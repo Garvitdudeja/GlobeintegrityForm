@@ -1015,7 +1015,7 @@ export function SignUp() {
                           )}
                           {currentInput === 8 && (<>
                             <h1 className="heading54 mb-4">
-                              We're almost to your estimate.
+                              We&apos;re almost to your estimate.
                             </h1>
                             <p className="sub20  mb-4">
                               As a last step, we need your email and phone number.
