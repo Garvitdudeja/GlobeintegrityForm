@@ -78,7 +78,7 @@ const Header = () => {
                   <div className='btnToggleOuter'>
                     <Link href="tel:+18447874652" className='commonBtn'>
                       <Image src={images.telIcon} alt='phone' width={20} height={20} className='me-1 mb-1' />
-                      +1-844-787-4652
+                      844-787-4652
                     </Link>
                     <input type="checkbox" id="menu-toggle" />
                     <label htmlFor="menu-toggle" className="menu-icon">&#9776;</label>
