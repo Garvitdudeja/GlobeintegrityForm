@@ -947,7 +947,7 @@ export function SignUp() {
                                     value={formData.height}
                                     onChange={handleHeightInput}
                                   />
-                                  <span className="unit">ft'in</span>
+                                  <span className="unit">ft&apos;in</span>
                                 </div>
                               </div>
 
