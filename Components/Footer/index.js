@@ -51,7 +51,6 @@ const Footer = () => {
                 <li><Link href="" className='sub16'>Terms & Conditions</Link></li>
                 <li><Link href="" className='sub16'>Licenses</Link></li>
                 </ul>
-
               </div>
               <div className='col-lg-4 text-uppercase'>
                 <Link href="" className='mb-3 d-block'><Image src={images.logoWhite} alt='logo' className='footerLogo img-fluid' width={241} height={63}/></Link>

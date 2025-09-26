@@ -943,7 +943,7 @@ export function SignUp() {
                                     type="text"
                                     id="height"
                                     className="weight-input"
-                                    placeholder="Enter heightupda"
+                                    placeholder="Enter height"
                                     value={formData.height}
                                     onChange={handleHeightInput}
                                   />
