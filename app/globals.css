@@ -305,9 +305,9 @@ background-color:rgb(45, 50, 105);
   border-radius: 50%;
 }
 .selectGender {
-  border: 2px solid #2d3269;
+  border: 1px solid #2d3269;
   text-align: center;
-  height: 80px;
+  height: 62px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -400,6 +400,7 @@ background-color:rgb(45, 50, 105);
   scrollbar-width: none; 
   -ms-overflow-style: none;
   padding-bottom: 90px;
+  justify-content: center;
 }
 
 .seletDateOuter {
@@ -1644,4 +1645,17 @@ display: block !important;
 .steperOption::-webkit-scrollbar {
     display: none; /* Chrome, Safari and Opera */
 }
+.steperOptionInner{
+  justify-content: start;
+}
+.customGrid{
+  grid-template-columns: 1fr;
+}
+}
+.customGrid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
 }

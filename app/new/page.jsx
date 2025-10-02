@@ -260,43 +260,43 @@ export function SignUp() {
                     <div className={`animated-slide ${fade ? "fade-enter-active" : "fade-exit-active"}`}>
                       {step === 0 && (
                         <>
-                          <h1 className="heading54 mb-4">Contact information</h1>
-                          <div className="seletDateOuter">
-                            <input type="text" id="First_Name" placeholder="First Name" value={formData.First_Name} onChange={(e) => updateFormData('First_Name', e.target.value)} />
-                            <label htmlFor="First_Name">First Name</label>
-                            {getError('First_Name') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('First_Name')}</p>}
-                          </div>
-                          <div className="seletDateOuter">
-                            <input type="text" id="Last_Name" placeholder="Last Name" value={formData.Last_Name} onChange={(e) => updateFormData('Last_Name', e.target.value)} />
-                            <label htmlFor="Last_Name">Last Name</label>
-                            {getError('Last_Name') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('Last_Name')}</p>}
-                          </div>
-                          <div className="seletDateOuter">
-                            <input type="email" id="Email" placeholder="Email" value={formData.Email} onChange={(e) => updateFormData('Email', e.target.value)} />
-                            <label htmlFor="Email">Email</label>
-                            {getError('Email') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('Email')}</p>}
-                          </div>
-                          <div className="seletDateOuter">
-                            <input type="text" id="Phone" placeholder="Phone" value={formData.Phone} onChange={(e) => updateFormData('Phone', e.target.value)} />
-                            <label htmlFor="Phone">Phone</label>
-                            {getError('Phone') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('Phone')}</p>}
+                          <h1 className="heading54 mb-3">Contact information</h1>
+                          <div className="row">
+                            <div className="col-lg-6">
+                              <div className="seletDateOuter">
+                                <input type="text" id="First_Name" placeholder="First Name" value={formData.First_Name} onChange={(e) => updateFormData('First_Name', e.target.value)} />
+                                <label htmlFor="First_Name">First Name</label>
+                                {getError('First_Name') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('First_Name')}</p>}
+                              </div>
+                            </div>
+                            <div className="col-lg-6">
+                              <div className="seletDateOuter">
+                                <input type="text" id="Last_Name" placeholder="Last Name" value={formData.Last_Name} onChange={(e) => updateFormData('Last_Name', e.target.value)} />
+                                <label htmlFor="Last_Name">Last Name</label>
+                                {getError('Last_Name') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('Last_Name')}</p>}
+                              </div>
+                            </div>
+                            <div className="col-lg-6">
+                              <div className="seletDateOuter">
+                                <input type="email" id="Email" placeholder="Email" value={formData.Email} onChange={(e) => updateFormData('Email', e.target.value)} />
+                                <label htmlFor="Email">Email</label>
+                                {getError('Email') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('Email')}</p>}
+                              </div>
+                            </div>
+                            <div className="col-lg-6">
+                              <div className="seletDateOuter">
+                                <input type="text" id="Phone" placeholder="Phone" value={formData.Phone} onChange={(e) => updateFormData('Phone', e.target.value)} />
+                                <label htmlFor="Phone">Phone</label>
+                                {getError('Phone') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('Phone')}</p>}
+                              </div>
+                            </div>
                           </div>
                         </>
                       )}
 
                       {step === 1 && (
                         <>
-                          <h1 className="heading54 mb-4">Basic details</h1>
-                          <div className="seletDateOuter">
-                            <input type="text" id="zipcode" placeholder="Zip Code" value={formData.zipCode} onChange={(e) => updateFormData('zipCode', e.target.value)} />
-                            <label htmlFor="zipcode">Zip Code</label>
-                            {getError('zipCode') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('zipCode')}</p>}
-                          </div>
-                          <div className="seletDateOuter">
-                            <input type="text" id="date" placeholder="MM/DD/YYYY" maxLength={10} value={formData.dob} onChange={handleDateInput} />
-                            <label htmlFor="date">MM/DD/YYYY</label>
-                            {getError('dob') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('dob')}</p>}
-                          </div>
+                          <h1 className="heading54 mb-3">Basic details</h1>
                           <label className="input-label d-block mb-2">Gender</label>
                           <div className="row">
                             <div className="col-lg-6 mb-3 mb-lg-0">
@@ -307,13 +307,30 @@ export function SignUp() {
                             </div>
                           </div>
                           {getError('gender') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('gender')}</p>}
+                          <div className="row">
+                            <div className="col-lg-6 mb-3 mb-lg-0">
+                              <div className="seletDateOuter">
+                                <input type="text" id="zipcode" placeholder="Zip Code" value={formData.zipCode} onChange={(e) => updateFormData('zipCode', e.target.value)} />
+                                <label htmlFor="zipcode">Zip Code</label>
+                                {getError('zipCode') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('zipCode')}</p>}
+                              </div>
+                            </div>
+                            <div className="col-lg-6 mb-3 mb-lg-0">
+                              <div className="seletDateOuter">
+                                <input type="text" id="date" placeholder="MM/DD/YYYY" maxLength={10} value={formData.dob} onChange={handleDateInput} />
+                                <label htmlFor="date">MM/DD/YYYY</label>
+                                {getError('dob') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('dob')}</p>}
+                              </div>
+                            </div>
+                          </div>  
                         </>
                       )}
 
                       {step === 2 && (
                         <>
-                          <h1 className="heading54 mb-4">Health</h1>
+                          <h1 className="heading54 mb-3">Health</h1>
                           <label className="input-label d-block mb-2">Tobacco/Marijuana usage (last 5 years)</label>
+                          <div className="customGrid">
                           {["None", "Cigarettes", "Marijuana", "Other"].map((label, index) => (
                             <div key={index} className="custom-checkbox-wrapper">
                               <input type="checkbox" id={`tobacco${index}`} className="custom-checkbox" checked={formData.tobaccoUse.includes(label)} onChange={() => handleArrayToggle('tobaccoUse', label)} />
@@ -323,8 +340,9 @@ export function SignUp() {
                           ))}
                           {getError('tobaccoUse') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('tobaccoUse')}</p>}
 
+                          </div>
                           <div className="row mt-3">
-                            <div className="col-lg-12 mb-3">
+                            <div className="col-lg-6 mb-3">
                               <label htmlFor="height" className="input-label">Height</label>
                               <div className="input-wrapper">
                                 <input type="text" id="height" className="weight-input" placeholder="Enter height" value={formData.height} onChange={handleHeightInput} />
@@ -332,7 +350,7 @@ export function SignUp() {
                               </div>
                               {getError('height') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('height')}</p>}
                             </div>
-                            <div className="col-lg-12 mb-3">
+                            <div className="col-lg-6 mb-3">
                               <label htmlFor="weight" className="input-label">Weight (lbs)</label>
                               <div className="input-wrapper">
                                 <input type="number" id="weight" className="weight-input" placeholder="" value={formData.weight} onChange={(e) => updateFormData('weight', e.target.value)} />
@@ -347,6 +365,7 @@ export function SignUp() {
                       {step === 3 && (
                         <>
                           <h1 className="heading54 mb-4">Your plan</h1>
+                          <div className="customGrid">
                           {["Lock in a guaranteed rate", "Help build more wealth", "Leave a legacy for my family", "Get tax-advantaged income", "Pay off debts", "Income protection"].map((label, index) => (
                             <div key={index} className="custom-checkbox-wrapper">
                               <input type="checkbox" id={`goal${index}`} className="custom-checkbox" checked={formData.goal.includes(label)} onChange={() => handleArrayToggle('goal', label)} />
@@ -354,6 +373,7 @@ export function SignUp() {
                               <label htmlFor={`goal${index}`} className="check-label">{label}</label>
                             </div>
                           ))}
+                          </div>
                           {getError('goal') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('goal')}</p>}
 
                           <h1 className="heading54 mb-4">
@@ -452,13 +472,13 @@ export function SignUp() {
           </div>
         </div>
       </section>
-      <div className="row mt-auto">
+      {/* <div className="row mt-auto">
         <div className="col-12">
           <div className="d-flex justify-content-center my-4 gap-3">
 
           </div>
         </div>
-      </div>
+      </div> */}
 
 
     </>);
