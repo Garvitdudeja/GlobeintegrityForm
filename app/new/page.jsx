@@ -3,6 +3,8 @@ import React, { Suspense, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaArrowLeft } from "react-icons/fa";
 import axios from "axios";
+import Image from "next/image";
+import * as images from "../../utilities/images";
 
 export function SignUp() {
   const [step, setStep] = useState(0); // 0..3
@@ -11,6 +13,7 @@ export function SignUp() {
   const min = 100;
   const max = 1000;
   const [sliderValue, setSliderValue] = useState(250);
+  const percentage = ((sliderValue - min) / (max - min)) * 100;
 
   const [formData, setFormData] = useState({
     First_Name: "",
@@ -174,6 +177,10 @@ export function SignUp() {
           Comfortable_Monthly_Contribution: parseFloat(formData.monthlyContribution || 0),
         }
       });
+      // Redirect to thank you page upon successful submission
+      if (typeof window !== 'undefined') {
+        window.location.href = 'https://globeintegrity.com/thankyou';
+      }
     } catch (error) {
       console.error('Error submitting final:', error);
       alert('There was an error submitting the form.');
@@ -349,41 +356,69 @@ export function SignUp() {
                           ))}
                           {getError('goal') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('goal')}</p>}
 
-                          <div className="formSliderWraper mb-4 mt-3" style={{ position: 'relative' }}>
-                            <div
-                              className="slider-label-box"
-                              style={{
-                                position: "absolute",
-                                top: "-40px",
-                                left: `calc(${((sliderValue - min) / (max - min)) * 100}% - 8px)`,
-                                backgroundColor: "#1e2a5a",
-                                color: "white",
-                                padding: "5px 10px",
-                                borderRadius: "5px",
-                                fontWeight: "bold",
-                              }}
-                            >
-                              ${sliderValue}
-                              <div className="slider-label-arrow"></div>
-                            </div>
-                            <input
-                              type="range"
-                              min={min}
-                              max={max}
-                              step={50}
-                              value={sliderValue}
-                              onChange={(e) => {
-                                const value = Number(e.target.value);
-                                setSliderValue(value);
-                                updateFormData('monthlyContribution', value);
-                              }}
-                              className="custombar-slider"
-                              style={{
-                                background: `linear-gradient(to right, #1e2a5a 0%, #1e2a5a ${((sliderValue - min) / (max - min)) * 100}%, #ccc ${((sliderValue - min) / (max - min)) * 100}%, #ccc 100%)`,
-                              }}
-                            />
-                            {getError('monthlyContribution') && <p className="text-danger mt-2" style={{ fontSize: '14px' }}>{getError('monthlyContribution')}</p>}
-                          </div>
+                          <h1 className="heading54 mb-4">
+                                What would be a comfortable monthly contribution?
+                              </h1>
+
+                              {/* Slider */}
+                              <div className="formSliderWraper mb-4">
+                                <div
+                                  className="slider-label-box"
+                                  style={{
+                                    position: "absolute",
+                                    top: "-40px",
+                                    left: `calc(${((sliderValue - min) / (max - min)) * 100
+                                      }% - 8px)`,
+                                    backgroundColor: "#1e2a5a",
+                                    color: "white",
+                                    padding: "5px 10px",
+                                    borderRadius: "5px",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  ${sliderValue}
+                                  <div className="slider-label-arrow"></div>
+                                </div>
+
+                                <input
+                                  type="range"
+                                  min={min}
+                                  max={max}
+                                  step={50}
+                                  value={sliderValue}
+                                  onChange={(e) => {
+                                    const value = Number(e.target.value);
+                                    setSliderValue(value);
+                                    updateFormData('monthlyContribution', value);
+                                  }}
+                                  className="custombar-slider"
+                                  style={{
+                                    background: `linear-gradient(to right, #1e2a5a 0%, #1e2a5a ${percentage}%, #ccc ${percentage}%, #ccc 100%)`,
+                                  }}
+                                />
+                              </div>
+
+                              {/* Info Box */}
+                              <div className="didYouNow">
+                                <div className="row align-items-center">
+                                  <div className="col-lg-4 text-center">
+                                    <Image src={images.benifit1} width={130} height={160} alt="image" />
+                                  </div>
+                                  <div className="col-lg-8">
+                                    <h4>DID YOU KNOW?</h4>
+                                    <p>
+                                      If you pay <strong>${sliderValue}.00</strong>{" "}
+                                      of premium a month into a policy&apos;s investment
+                                      subaccounts, you could grow your account value
+                                      up to{" "}
+                                      <strong>
+                                        ${(sliderValue * 2270).toLocaleString()}
+                                      </strong>{" "}
+                                      after 30 years.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
                         </>
                       )}
 
