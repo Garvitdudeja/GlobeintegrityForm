@@ -172,10 +172,10 @@ export function SignUp() {
           Zip_Code: formData.zipCode,
           Date_of_Birth: formData.dob,
           Gender: formData.gender,
-          Tobacco_Marijuana_Use: formData.tobaccoUse.join(', '),
+          Tobacco_Marijuana_Use: formData.tobaccoUse && formData.tobaccoUse.length > 0 ? formData.tobaccoUse.join(', ') : 'None',
           Height: formData.height,
           Weight: parseFloat(formData.weight || 0),
-          Insurance: formData.goal.join(', '),
+          Insurance: formData.goal && formData.goal.length > 0 ? formData.goal.join(', ') : '',
           Comfortable_Monthly_Contribution: parseFloat(formData.monthlyContribution || 0),
         }
       });
