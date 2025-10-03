@@ -266,10 +266,10 @@ export function SignUp() {
                               marginTop: '20px', 
                               paddingTop: '0' 
                             }}>
-                              We&apos;re almost to your estimate.
+                              Tell us about yourself
                             </h1>
                             <p className="sub20  mb-4">
-                              As a last step, we need your email and phone number.
+                              As our first step, we need your email and phone number.
                             </p>
                             <div className="seletDateOuter">
                               <input
@@ -410,9 +410,9 @@ export function SignUp() {
 
                       {step === 3 && (
                         <>
-                          <h1 className="heading54 mb-4">Your plan</h1>
-                          Lock in a guaranteed rate
-                          <label className="input-label">Height</label>
+                          <h1 className="heading54 mb-4">
+                                Why are you looking for life insurance?
+                          </h1>
                           
 
                           <div className="customGrid">
