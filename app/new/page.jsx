@@ -17,6 +17,7 @@ export function SignUp() {
 
   const [formData, setFormData] = useState({
     First_Name: "",
+    terms: true,
     Last_Name: "",
     Email: "",
     Phone: "",
@@ -45,6 +46,7 @@ export function SignUp() {
       case "Last_Name": return "Please enter your last name.";
       case "Email": return "Please enter a valid email.";
       case "Phone": return "Please enter a valid phone number.";
+      case "terms": return "Please Accept Terms and Conditions.";
       case "zipCode": return "Please enter your zip code.";
       case "dob": return "Please enter a valid date of birth (MM/DD/YYYY).";
       case "gender": return "Please select your gender.";
