@@ -1041,7 +1041,8 @@ export function SignUp() {
                               )}
                             </>
                           )}
-                          {currentInput === 8 && (<>
+                          {currentInput === 8 && (
+                            <>
                             <h1 className="heading54 mb-4">
                               We&apos;re almost to your estimate.
                             </h1>
