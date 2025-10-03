@@ -149,6 +149,8 @@ export function SignUp() {
     setTimeout(() => {
       setStep(prev => Math.min(prev + 1, steps.length - 1));
       setFade(true);
+      // Scroll to top when moving to next step
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 200);
   };
 
