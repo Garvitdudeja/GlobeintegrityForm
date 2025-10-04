@@ -1,5 +1,5 @@
 "use client";
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaArrowLeft } from "react-icons/fa";
 import axios from "axios";
@@ -149,8 +149,43 @@ export function SignUp() {
     setTimeout(() => {
       setStep(prev => Math.min(prev + 1, steps.length - 1));
       setFade(true);
-      // Scroll to top when moving to next step
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Scroll to top with offset to account for headers/padding
+      const containers = [
+        '.steperOptionInner',
+        '.steperOption', 
+        '.animated-slide',
+        'body',
+        'html'
+      ];
+      
+      containers.forEach(selector => {
+        const container = document.querySelector(selector);
+        if (container) {
+          console.log(`Trying ${selector}:`, container);
+          console.log(`${selector} scrollHeight:`, container.scrollHeight);
+          console.log(`${selector} clientHeight:`, container.clientHeight);
+          console.log(`${selector} scrollTop before:`, container.scrollTop);
+          
+          // Try scrolling with a small negative offset to get to exact top
+          const scrollOffset = -50; // Adjust this value as needed
+          container.scrollTop = scrollOffset;
+          
+          if (container.scrollTo) {
+            container.scrollTo(0, scrollOffset);
+            container.scrollTo({ top: scrollOffset, behavior: 'smooth' });
+          }
+          if (container.scrollIntoView) {
+            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          
+          setTimeout(() => {
+            console.log(`${selector} scrollTop after:`, container.scrollTop);
+          }, 100);
+        } else {
+          console.log(`${selector} not found`);
+        }
+      });
     }, 200);
   };
 
