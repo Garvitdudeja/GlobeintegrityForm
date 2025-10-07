@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FaArrowLeft } from "react-icons/fa";
 import axios from "axios";
 import Image from "next/image";
-import * as images from "../../utilities/images";
+import * as images from "../utilities/images";
 
 export function SignUp() {
   const [step, setStep] = useState(0); // 0..3
